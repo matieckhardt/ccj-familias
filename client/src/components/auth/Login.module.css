@@ -1,0 +1,96 @@
+.select > div{
+    text-transform: capitalize;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.containerRegister{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    height: 93vh;
+    width: 80%;
+    margin-top: 30px;
+    margin-left: 10%;
+    align-items: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.containerBotonAtras{
+    display: flex;
+    width: 100%;
+}
+.botonAtras{
+    color:#2489ee;
+    font-size: 30px;
+    margin-left: 30px;
+    padding: 10px;
+}
+.containerFormulario{
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    height: 85vh;
+    width: 100%;
+    background-color:   #ffffff3d;;
+    margin-right: 0;
+    padding: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 10px rgba(51, 51, 51, 0.521);
+}
+.formulario{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.tituloFormulario{
+    color: #007bf5;
+    font-family: omnes-pro, sans-serif;
+}
+.containerImagen{
+    display: flex;
+    justify-content: flex-start;
+}   
+.imagen{
+    border-radius: 50%;
+    width: 75px;
+}
+.iconMas{
+    color: #262626;
+    position: absolute;
+    font-size: 20px;
+}
+.input{
+    border-radius: 20px;
+    border: none;
+    height: 60px;
+    width: 100%;
+    margin-top: 20px;
+    padding-left: 20px;
+    outline: none;
+}
+.input::placeholder{
+    color:#838383dc;
+    font-size: 15px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+.boton{
+    border: none;
+    background-color: #fde5e5;
+    border-radius: 20px;
+    color: #469cf2;
+    font-size: 15px;
+    padding: 2px 20px 2px 20px;
+    height: 40px;
+    width:200px;
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+}

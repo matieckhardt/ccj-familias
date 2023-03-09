@@ -1,0 +1,76 @@
+.containerNav{
+    height: 7vh;
+    width: 100%;
+    display: flex;
+    padding: 0px 20px 0px 20px;
+    justify-content: space-between;
+}
+/* FOTO NAV */
+.fotoNav{
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+}
+.foto{
+    width: 200px;
+}
+
+
+/*BOTONES NAV */
+
+.botonesNav{
+    display: flex;
+    margin-left: 10px;
+    width: 60%;
+
+}
+.aNav{
+    text-decoration: none;
+    
+}
+.ulNav{
+    display: flex;
+    width: 40%;
+    text-decoration: none;
+    align-items: center;
+    list-style: none;
+    
+}
+
+.liNav{
+    flex-wrap: wrap;
+    margin:10px;
+}
+.aNav{
+    text-decoration: none;
+    color: #E3E4E5;
+    text-decoration: none;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Boton Login */
+
+.botonLogin{
+    color:  #E3E4E5;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+font-weight: 500;
+font-style: normal;
+}
+.boton{
+    background-color: #1DAFA5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    align-items: center;
+    text-decoration: none;
+    color: #E3E4E5;
+}
+
