@@ -25,20 +25,20 @@ function RegisterStudent() {
   const getUserData = async function (res, req) {
     const token = JSON.stringify(localStorage.token);
     const response = await fetch(
-      "http://localhost:4000/api/v1/auth/user/profile?token=" + token
+      "http://localhost:80/api/v1/auth/user/profile?token=" + token
     );
     const objeto = await response.json();
     setUser(objeto);
 
     const data = await fetch(
-      "http://localhost:4000/api/v1/Familias/" + objeto.userMail
+      "http://localhost:80/api/v1/Familias/" + objeto.userMail
     );
     const datosMhg = await data.json();
     console.log(datosMhg);
     setDatos(datosMhg);
 
     const alumnos = await fetch(
-      "http://localhost:4000/api/v1/Legajos/" + datosMhg[0].CODFAM
+      "http://localhost:80/api/v1/Legajos/" + datosMhg[0].CODFAM
     );
     const caca = await alumnos.json();
     const alumnosData = caca.map(({ NOMBRE, APELLIDO, DNI, MATRICULA }) => ({
@@ -48,7 +48,7 @@ function RegisterStudent() {
       MATRICULA,
     }));
 
-    const cursos = await fetch("http://localhost:4000/api/v1/alumnosCursos");
+    const cursos = await fetch("http://localhost:80/api/v1/alumnosCursos");
     const cursoData = await cursos.json();
 
     let mapped = cursoData.reduce((a, c) => ((a[c.DNI] = c), a), {});

@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api/v1";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:80/api/v1";
 const API_AUTH_URL = API_URL;
 
 export const handleRegister = async (name, curso, cupo, division) => {
