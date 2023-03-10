@@ -173,153 +173,151 @@ function RegisterTaller() {
   };
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider muiTheme={getMuiTheme()}>
-        <Container maxWidth="xl">
-          <Box
-            sx={{
-              marginLeft: "18%",
-              display: "flex",
-              flexWrap: "wrap",
-              "& > :not(style)": {
-                m: 1,
-                width: "100%",
-                minHeight: "80vh",
-                height: "auto",
-              },
-            }}
-          >
-            <Paper elevation={3}>
-              <Box>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    textAlign: "center",
-                    marginTop: "50px",
-                    marginBottom: "60px",
-                    color: "#1876D1",
-                    fontWeight: 800,
-                  }}
+    <>
+<Container maxWidth="xl">
+        <Box
+          sx={{
+            marginLeft: "18%",
+            display: "flex",
+            flexWrap: "wrap",
+            "& > :not(style)": {
+              m: 1,
+              width: "100%",
+              minHeight: "80vh",
+              height: "auto",
+            },
+          }}
+        >
+          <Paper elevation={3}>
+            <Box>
+              <Typography
+                variant="h4"
+                sx={{
+                  textAlign: "center",
+                  marginTop: "50px",
+                  marginBottom: "60px",
+                  color: "#1876D1",
+                  fontWeight: 800,
+                }}
+              >
+                Inscripcion a Talleres
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  padding: 5,
+                  textAlign: "center",
+                  color: "Black",
+                  fontWeight: 500,
+                }}
+              >
+                Los talleres disponen de un cupo maximo para optimizar el
+                rendimiento de las clases. <br /> A medida que estos cupos se
+                completan se generan listas de espera, <br /> hasta alcanzar la
+                cantidad minima requerida para habilitar un nuevo grupo.
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                sx={{
+                  "& .MuiTextField-root": { m: 1, width: "20ch" },
+                }}
+                noValidate
+              >
+                <TextField
+                  select
+                  label="Alumno"
+                  name={id}
+                  value={registerState.alumno}
+                  onChange={getNames}
                 >
-                  Inscripcion a Talleres
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    padding: 5,
-                    textAlign: "center",
-                    color: "Black",
-                    fontWeight: 500,
-                  }}
-                >
-                  Los talleres disponen de un cupo maximo para optimizar el
-                  rendimiento de las clases. <br /> A medida que estos cupos se
-                  completan se generan listas de espera, <br /> hasta alcanzar la
-                  cantidad minima requerida para habilitar un nuevo grupo.
-                </Typography>
-                <Box
-                  component="form"
-                  onSubmit={handleSubmit}
-                  sx={{
-                    "& .MuiTextField-root": { m: 1, width: "20ch" },
-                  }}
-                  noValidate
-                >
-                  <TextField
-                    select
-                    label="Alumno"
-                    name={id}
-                    value={registerState.alumno}
-                    onChange={getNames}
-                  >
-                    {alumno.map((e) => {
-                      return (
-                        <MenuItem
-                          name={e.DNI}
-                          key={e.DNI}
-                          value={e.CURSO}
-                          onFocus={handleChange}
-                        >
-                          {e.NOMBRE}, {e.APELLIDO}{" "}
-                        </MenuItem>
-                      );
-                    })}
-                  </TextField>
+                  {alumno.map((e) => {
+                    return (
+                      <MenuItem
+                        name={e.DNI}
+                        key={e.DNI}
+                        value={e.CURSO}
+                        onFocus={handleChange}
+                      >
+                        {e.NOMBRE}, {e.APELLIDO}{" "}
+                      </MenuItem>
+                    );
+                  })}
+                </TextField>
 
-                  <TextField
-                    select
-                    onMouseMove={handleChangeTaller}
-                    label="Seleccione el taller"
-                  >
-                    {talleres.map((taller) => {
-                      return (
-                        <MenuItem
-                          name="taller"
-                          key={taller._id}
-                          value={taller.name}
-                        >
-                          {taller.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </TextField>
-                  <TextField
-                    select
-                    onChange={handleChangeInstrumento}
-                    label="Posee instrumento?"
-                  >
-                    <MenuItem name="Si" value="Si">
-                      {" "}
-                      Si
-                    </MenuItem>
-                    <MenuItem name="No" value="No">
-                      No
-                    </MenuItem>
-                  </TextField>
-                  <Box>
-                    <h4>{hayLugar}</h4>
-                  </Box>
+                <TextField
+                  select
+                  onMouseMove={handleChangeTaller}
+                  label="Seleccione el taller"
+                >
+                  {talleres.map((taller) => {
+                    return (
+                      <MenuItem
+                        name="taller"
+                        key={taller._id}
+                        value={taller.name}
+                      >
+                        {taller.name}
+                      </MenuItem>
+                    );
+                  })}
+                </TextField>
+                <TextField
+                  select
+                  onChange={handleChangeInstrumento}
+                  label="Posee instrumento?"
+                >
+                  <MenuItem name="Si" value="Si">
+                    {" "}
+                    Si
+                  </MenuItem>
+                  <MenuItem name="No" value="No">
+                    No
+                  </MenuItem>
+                </TextField>
+                <Box>
+                  <h4>{hayLugar}</h4>
+                </Box>
 
-                  <Button
+                <Button
+                  variant="contained"
+                  type="submit"
+                  sx={{
+                    marginTop: "9px",
+                    marginLeft: "10px",
+                    padding: "15px 20px",
+                  }}
+                >
+                  Register
+                </Button>
+                {hasErrorLogin && (
+                  <Typography
                     variant="contained"
-                    type="submit"
+                    color="red"
                     sx={{
-                      marginTop: "9px",
-                      marginLeft: "10px",
-                      padding: "15px 20px",
+                      textTransform: "capitalize",
                     }}
                   >
-                    Register
-                  </Button>
-                  {hasErrorLogin && (
-                    <Typography
-                      variant="contained"
-                      color="red"
-                      sx={{
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      {errorMessageLogin}
-                    </Typography>
-                  )}
-                  {hasErrorLogin && (
-                    <Typography
-                      variant="contained"
-                      color="red"
-                      sx={{
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      {errorMessageLogin}
-                    </Typography>
-                  )}
-                </Box>
+                    {errorMessageLogin}
+                  </Typography>
+                )}
+                {hasErrorLogin && (
+                  <Typography
+                    variant="contained"
+                    color="red"
+                    sx={{
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {errorMessageLogin}
+                  </Typography>
+                )}
               </Box>
-            </Paper>
-          </Box>
-        </Container>
-      </ThemeProvider>
-    </StyledEngineProvider>
+            </Box>
+          </Paper>
+        </Box>
+      </Container>
+      </>
   );
 }
 
