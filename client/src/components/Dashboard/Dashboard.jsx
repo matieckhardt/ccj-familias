@@ -15,13 +15,15 @@ const Dashboard = () => {
   const getUserData = async function (res, req) {
     const token = JSON.stringify(localStorage.token);
     const response = await fetch(
-      "http://localhost:80/api/v1/auth/user/profile?token=" + token
+      "https://familias.colegiociudadjardin.edu.ar/api/v1/auth/user/profile?token=" +
+        token
     );
     const objeto = await response.json();
     setUser(objeto);
 
     const data = await fetch(
-      "http://localhost:80/api/v1/Familias/" + objeto.userMail
+      "https://familias.colegiociudadjardin.edu.ar/api/v1/Familias/" +
+        objeto.userMail
     );
     const datosMhg = await data.json();
     setDatos(datosMhg[0]);

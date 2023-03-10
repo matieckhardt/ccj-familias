@@ -95,7 +95,9 @@ function RegisterCupo() {
   }, []);
 
   const cuposData = async function (res, req) {
-    const response = await fetch("http://localhost:80/api/v1/cupos/list");
+    const response = await fetch(
+      "https://familias.colegiociudadjardin.edu.ar/api/v1/cupos/list"
+    );
     const objeto = await response.json();
     setCupo(objeto);
   };
