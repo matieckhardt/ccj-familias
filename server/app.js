@@ -9,6 +9,16 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const { authMiddleware } = require('./middlewares/authMiddleware');
 
+require("dotenv").config();
+require("./database");
+const initConnectionDatabase = require("./databaseSql");
+
+app.listen(app.get("PORT"), () => {
+  console.log(`Server on port: http://localhost:${app.get("PORT")}`);
+  initConnectionDatabase();
+});
+
+
 app.set('PORT', config.PORT || 3000);
 app.set('secret', config.secretKey);
 

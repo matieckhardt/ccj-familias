@@ -1,0 +1,26 @@
+{
+  "defaults": {
+    "store": {
+      "module": "greenlock-store-fs"
+    },
+    "challenges": {
+      "http-01": {
+        "module": "acme-http-01-standalone"
+      }
+    },
+    "renewOffset": "-45d",
+    "renewStagger": "3d",
+    "accountKeyType": "EC-P256",
+    "serverKeyType": "RSA-2048",
+    "subscriberEmail": "info@switchit.com.ar"
+  },
+  "sites": [
+    {
+      "subject": "familias.colegiociudadjardin.edu.ar",
+      "altnames": [
+        "familias.colegiociudadjardin.edu.ar"
+      ],
+      "renewAt": 1682200930744
+    }
+  ]
+}
