@@ -173,7 +173,7 @@ function RegisterTaller() {
   };
 
   return (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
+    <MuiThemeProvider>
       <Container maxWidth="xl">
         <Box
           sx={{
