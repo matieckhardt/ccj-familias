@@ -20,7 +20,7 @@ import { handleRegister } from "../../services/alumnoCreate";
 import { toast } from "react-hot-toast";
 import { changeRegisteredIn } from "../../redux/actions/globalActions";
 import React from "react";
-import MuiThemeProvider from "@mui/material/styles/MuiThemeProvider";
+import MuiThemeProvider from "@mui/material";
 
 function RegisterTaller() {
   const { dispatch } = useContext(AppContext);
