@@ -20,6 +20,7 @@ import { handleRegister } from "../../services/alumnoCreate";
 import { toast } from "react-hot-toast";
 import { changeRegisteredIn } from "../../redux/actions/globalActions";
 import React from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 function RegisterTaller() {
   const { dispatch } = useContext(AppContext);
@@ -172,7 +173,7 @@ function RegisterTaller() {
   };
 
   return (
-    <>
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
       <Container maxWidth="xl">
         <Box
           sx={{
@@ -316,7 +317,7 @@ function RegisterTaller() {
           </Paper>
         </Box>
       </Container>
-    </>
+    </MuiThemeProvider>
   );
 }
 
