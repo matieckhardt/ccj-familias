@@ -1,5 +1,7 @@
 module.exports = {
-  MONGODB_URI: process.env.MONGODB_URI || "mongodb://localhost/usuarios",
+  MONGODB_URI:
+    process.env.MONGODB_URI ||
+    "mongodb://10.0.0.231:27017/ccj-familias?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
   PORT: process.env.PORT || 80,
   secretKey: process.env.SECRET_KEY || "myUltraSecretKey",
   expiresInJWT: process.env.EXPIRE_JWT || "1h",

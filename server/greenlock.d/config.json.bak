@@ -18,7 +18,8 @@
     {
       "subject": "familias.colegiociudadjardin.edu.ar",
       "altnames": [
-        "familias.colegiociudadjardin.edu.ar"
+        "familias.colegiociudadjardin.edu.ar",
+        "localhost"
       ],
       "renewAt": 1682296928326
     }

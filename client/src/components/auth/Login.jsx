@@ -62,7 +62,7 @@ function Login() {
               <BsFillArrowLeftCircleFill />
             </a>
           </div>
-          <h1 className={style.tituloFormulario}>Iniciar Sesion</h1>
+          <h1 className={style.tituloFormulario}>Acceso Familias</h1>
           <form className={style.formulario} onSubmit={handleSubmit}>
             <div className={style.containerImagen}></div>
             <CardContent
@@ -77,25 +77,26 @@ function Login() {
               }}
             >
               <FormControl>
-                <InputLabel>Email Address</InputLabel>
+                <InputLabel>Email</InputLabel>
                 <Input
                   name="userMail"
                   type="email"
                   value={email}
                   onChange={handleChangeEmail}
                 />
-                <FormHelperText>We'll never share your email.</FormHelperText>
+                <FormHelperText>Ingrese el mail del Responsable</FormHelperText>
               </FormControl>
 
               <FormControl>
-                <InputLabel>Password</InputLabel>
+                <InputLabel>Contraseña</InputLabel>
                 <Input
                   name="userPassword"
                   type="password"
                   value={password}
                   onChange={handleChangePassword}
+                  autoComplete="off"
                 />
-                <FormHelperText>Please type your password.</FormHelperText>
+                <FormHelperText>Por favor ingrese su contraseña</FormHelperText>
               </FormControl>
               <Box
                 sx={{
@@ -111,7 +112,7 @@ function Login() {
                     padding: "10px 20px",
                   }}
                 >
-                  Log In
+                  Iniciar Sesión
                 </Button>
               </Box>
               {hasErrorLogin && (
@@ -126,11 +127,12 @@ function Login() {
                 </Typography>
               )}
             </CardContent>
-            <span>
+            <h4>
               {" "}
-              Si no se encuentra registrado, cree su cuenta{" "}
+              Si es la primera vez que ingresa y no se encuentra registrado,
+              <br></br> cree su cuenta<br></br>
               <a href="/register">AQUI</a>
-            </span>
+            </h4>
           </form>
         </div>
       </div>

@@ -158,7 +158,7 @@ function RegisterAjedrez() {
                   fontWeight: 800,
                 }}
               >
-                Inscripcion al taller de Ajedrez
+                Inscripcion al taller de Ajedrez 2023
               </Typography>
               <Typography
                 variant="body1"
@@ -170,7 +170,10 @@ function RegisterAjedrez() {
                 }}
               >
                 El taller de Ajedrez solamente esta disponible desde 2do grado
-                hasta 6 grado de primaria
+                hasta 6 año de secundaria. <br />
+                El taller de ajedrez para nivel secundario se realiza los lunes
+                de 13:10 a 14 hs y está a cargo del Prof. Pablo García. Se
+                solicita compromiso en la asistencia hasta fin de año.
               </Typography>
               <Box
                 component="form"

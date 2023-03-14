@@ -50,7 +50,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/Mis%20Datos" element={<Wrapper></Wrapper>} />
           <Route path="/Mis%20Alumnos" element={<Wrapper></Wrapper>} />
-          <Route path="/Talleres" element={<Wrapper></Wrapper>} />
+          <Route path="/Instrumentos" element={<Wrapper></Wrapper>} />
           <Route path="/Ajedrez" element={<Wrapper></Wrapper>} />
           <Route path="/Cupos" element={<Wrapper></Wrapper>} />
           <Route path="/Matriculados" element={<Wrapper></Wrapper>} />

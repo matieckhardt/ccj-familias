@@ -107,7 +107,8 @@ export default function PersistentDrawerLeft() {
             onClick={handleDrawerOpen}
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
-            size="large">
+            size="large"
+          >
             <MenuIcon />
           </IconButton>
           <div className={style.containerNav}>
@@ -153,7 +154,7 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Mis Datos", "Mis Alumnos", "Talleres", "Ajedrez"].map(
+          {["Mis Datos", "Mis Alumnos", "Instrumentos", "Ajedrez"].map(
             (text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton component={Link} href={text}>

@@ -174,7 +174,7 @@ function RegisterTaller() {
 
   return (
     <>
-<Container maxWidth="xl">
+      <Container maxWidth="xl">
         <Box
           sx={{
             marginLeft: "18%",
@@ -184,7 +184,7 @@ function RegisterTaller() {
               m: 1,
               width: "100%",
               minHeight: "80vh",
-              height: "auto",
+              height: "100%",
             },
           }}
         >
@@ -200,7 +200,7 @@ function RegisterTaller() {
                   fontWeight: 800,
                 }}
               >
-                Inscripcion a Talleres
+                Inscripcion a Taller de Insrtumento 2023
               </Typography>
               <Typography
                 variant="body1"
@@ -278,7 +278,21 @@ function RegisterTaller() {
                 <Box>
                   <h4>{hayLugar}</h4>
                 </Box>
-
+                <Typography
+                  variant="body1"
+                  sx={{
+                    padding: 5,
+                    textAlign: "center",
+                    color: "Black",
+                    fontWeight: 800,
+                    fontSize: 12,
+                  }}
+                >
+                  Recordamos que la asistencia a clases es opcional mediando un
+                  compromiso de asistir durante todo el ciclo lectivo. <br></br>{" "}
+                  Declaro conocer y aceptar los valores de las actividades
+                  propuestas y las condiciones para su inscripción y permanencia
+                </Typography>
                 <Button
                   variant="contained"
                   type="submit"
@@ -288,7 +302,7 @@ function RegisterTaller() {
                     padding: "15px 20px",
                   }}
                 >
-                  Register
+                  Inscribir
                 </Button>
                 {hasErrorLogin && (
                   <Typography
@@ -317,7 +331,7 @@ function RegisterTaller() {
           </Paper>
         </Box>
       </Container>
-      </>
+    </>
   );
 }
 
