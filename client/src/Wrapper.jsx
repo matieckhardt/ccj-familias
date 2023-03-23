@@ -5,6 +5,8 @@ import Alumnos from "./components/Alumnos/Alumnos";
 import Talleres from "./components/Talleres/Talleres";
 import Ajedrez from "./components/Ajedrez/Ajedrez";
 import Cupos from "./components/Cupos/Cupos";
+import CodeGPT from "./components/CodeGPT/CodeGPT";
+
 import { Route, useLocation, Link } from "react-router-dom";
 
 function Wrapper() {
@@ -23,6 +25,8 @@ function Wrapper() {
           <Ajedrez></Ajedrez>
         ) : location.pathname === "/Cupos" ? (
           <Cupos></Cupos>
+        ) : location.pathname === "/CodeGPT" ? (
+          <CodeGPT></CodeGPT>
         ) : (
           <Talleres></Talleres>
         )}
