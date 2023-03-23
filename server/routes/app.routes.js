@@ -33,7 +33,7 @@ router.post("/cupos/register", cuposCtrl.createCupo);
 router.post("/cupos/delete/:id", cuposCtrl.deleteCupo);
 router.post("/taller/register", tallerCtrl.createTaller);
 router.get("/talleres/registrados/:curso", tallerCtrl.registrados);
-router.get("/talleres/registrados/:nombre", tallerCtrl.tallerInscripto);
+router.get("/talleres/registrados/nombre/:nombre", tallerCtrl.tallerInscripto);
 
 router.get("/Familias", sqlCtrl.getAll);
 router.get("/Familias/:mail", sqlCtrl.getFamilia);
