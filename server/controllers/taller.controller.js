@@ -34,14 +34,6 @@ tallerCtrl.registrados = async (req, res) => {
   res.json(registrados);
 };
 
-tallerCtrl.tallerInscripto = async (req, res) => {
-  console.log("tallerIsc", req.params);
-  const registrados = await Talleres.find(req.params);
-
-  console.log("tallerInscripto", registrados);
-  res.json(registrados);
-};
-
 tallerCtrl.createTaller = async (req, res, next) => {
   try {
     const userData = req.body;

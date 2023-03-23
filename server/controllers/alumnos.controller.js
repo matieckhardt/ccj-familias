@@ -13,6 +13,14 @@ alumnosCtrl.listAlumnos = async (req, res) => {
   res.json(alumnos);
 };
 
+alumnosCtrl.tallerInscripto = async (req, res) => {
+  console.log("alumno", req.params);
+  const registrados = await Alumnos.find(req.params);
+
+  console.log("Alumnos Inscriptos", registrados);
+  res.json(registrados);
+};
+
 alumnosCtrl.createAlumno = async (req, res, next) => {
   try {
     const userData = req.body;
