@@ -35,7 +35,7 @@ tallerCtrl.registrados = async (req, res) => {
 };
 
 tallerCtrl.tallerInscripto = async (req, res) => {
-  console.log(req.params);
+  console.log("tallerIsc", req.params);
   const registrados = await Talleres.find(req.params);
 
   console.log("tallerInscripto", registrados);
