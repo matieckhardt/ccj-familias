@@ -21,6 +21,7 @@ let alumnosSchema = new Schema(
       type: String,
       required: [true, "el instrumento es obligatorio"],
     },
+    dni: Number,
   },
   {
     timestamps: true,

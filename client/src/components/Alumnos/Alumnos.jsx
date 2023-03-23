@@ -17,6 +17,8 @@ function RegisterStudent() {
   const [alumno, setAlumno] = React.useState([]);
   const [datosMhg, setDatos] = React.useState([]);
   const [User, setUser] = React.useState([]);
+  const [workshops, setWorkshops] = React.useState([]);
+  const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
     getUserData();
@@ -36,7 +38,6 @@ function RegisterStudent() {
         objeto.userMail
     );
     const datosMhg = await data.json();
-    console.log(datosMhg);
     setDatos(datosMhg);
 
     const alumnos = await fetch(
@@ -58,92 +59,120 @@ function RegisterStudent() {
 
     let mapped = cursoData.reduce((a, c) => ((a[c.DNI] = c), a), {});
     let result = alumnosData.map((o) => Object.assign(o, mapped[o.DNI]));
+
+    for (const item of result) {
+      const registrado = await fetch(
+        "https://familias.colegiociudadjardin.edu.ar/api/v1/instrumentos/registrados/" +
+          item.NOMBRE +
+          ", " +
+          item.APELLIDO
+      );
+      const tallerData = await registrado.json();
+      console.log("registrado", tallerData);
+      const taller = tallerData.length ? tallerData[0].taller : "NO";
+      item.TALLER = taller;
+    }
+    console.log("result", result);
+
     setAlumno(result);
+    setProgress(1);
   };
 
-  return (
-    <>
-      <Container maxWidth="xl">
-        <Box
-          sx={{
-            marginLeft: "18%",
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: "100%",
-              height: "80vh",
-            },
-          }}
-        >
-          <Paper elevation={3}>
-            <Box
-              component="form"
-              sx={{
-                "& .MuiTextField-root": { m: 1, width: "20ch" },
-              }}
-              noValidate
-            >
-              <Typography
-                variant="h4"
+  if (progress == 0) {
+    return <div>"loading"</div>;
+  } else {
+    return (
+      <>
+        <Container maxWidth="xl">
+          <Box
+            sx={{
+              marginLeft: "18%",
+              display: "flex",
+              flexWrap: "wrap",
+              "& > :not(style)": {
+                m: 1,
+                width: "100%",
+                height: "80vh",
+              },
+            }}
+          >
+            <Paper elevation={3}>
+              <Box
+                component="form"
                 sx={{
-                  textAlign: "center",
-                  marginTop: "50px",
-                  color: "#1876D1",
-                  fontWeight: 800,
+                  "& .MuiTextField-root": { m: 1, width: "20ch" },
                 }}
+                noValidate
               >
-                Alumnos
-              </Typography>
-              <Container sx={{ marginTop: "50px", color: "#1876D1" }}>
-                <TableContainer
-                  sx={{ marginTop: "100px", textAlign: "center" }}
+                <Typography
+                  variant="h4"
+                  sx={{
+                    textAlign: "center",
+                    marginTop: "50px",
+                    color: "#1876D1",
+                    fontWeight: 800,
+                  }}
                 >
-                  <Table sx={{}} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Nombre</TableCell>
-                        <TableCell align="left">Apellido</TableCell>
-                        <TableCell align="left">Curso</TableCell>
-                        <TableCell align="left">DNI</TableCell>
-                        <TableCell align="left">Legajo</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {alumno.map((e) => (
-                        <TableRow
-                          key={e._id}
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 0 },
-                          }}
-                        >
-                          <TableCell component="th" scope="row" key={e.NOMBRE}>
-                            {e.NOMBRE}
-                          </TableCell>
-                          <TableCell key={e._id} align="left">
-                            {e.APELLIDO}
-                          </TableCell>
-                          <TableCell key={e._id} align="left">
-                            {e.CURSO}
-                          </TableCell>
-                          <TableCell key={e._id} align="left">
-                            {e.DNI}
-                          </TableCell>
-                          <TableCell key={e._id} align="left">
-                            {e.MATRICULA}
-                          </TableCell>
+                  Alumnos
+                </Typography>
+                <Container sx={{ marginTop: "50px", color: "#1876D1" }}>
+                  <TableContainer
+                    sx={{ marginTop: "100px", textAlign: "center" }}
+                  >
+                    <Table aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Nombre</TableCell>
+                          <TableCell align="left">Apellido</TableCell>
+                          <TableCell align="left">Curso</TableCell>
+                          <TableCell align="left">DNI</TableCell>
+                          <TableCell align="left">Legajo</TableCell>
+                          <TableCell align="left">Instrumento</TableCell>
                         </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Container>
-            </Box>
-          </Paper>
-        </Box>
-      </Container>
-    </>
-  );
+                      </TableHead>
+                      <TableBody>
+                        {alumno.map((e) => (
+                          <TableRow
+                            key={e._id}
+                            sx={{
+                              "&:last-child td, &:last-child th": { border: 0 },
+                            }}
+                          >
+                            <TableCell
+                              component="th"
+                              scope="row"
+                              key={e.NOMBRE}
+                            >
+                              {e.NOMBRE}
+                            </TableCell>
+                            <TableCell key={Math.random()} align="left">
+                              {e.APELLIDO}
+                            </TableCell>
+                            <TableCell key={Math.random()} align="left">
+                              {e.CURSO}
+                            </TableCell>
+                            <TableCell key={Math.random()} align="left">
+                              {e.DNI}
+                            </TableCell>
+                            <TableCell key={Math.random()} align="left">
+                              {e.MATRICULA}
+                            </TableCell>
+                            <TableCell key={Math.random()} align="left">
+                              {e.TALLER}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Container>
+              </Box>
+            </Paper>
+          </Box>
+        </Container>
+      </>
+    );
+  }
 }
 
 export default RegisterStudent;
