@@ -34,6 +34,25 @@ tallerCtrl.registrados = async (req, res) => {
   res.json(registrados);
 };
 
+tallerCtrl.registradosAll = async (req, res) => {
+  console.log(req.params);
+  const registrados = await Alumnos.aggregate([
+    {
+      $match: {
+        curso: req.params.curso,
+      },
+    },
+    {
+      $match: {
+        taller: req.params.taller,
+      },
+    },
+  ]);
+
+  console.log("registrados", registrados);
+  res.json(registrados);
+};
+
 tallerCtrl.createTaller = async (req, res, next) => {
   try {
     const userData = req.body;

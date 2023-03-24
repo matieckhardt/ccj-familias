@@ -89,6 +89,12 @@ const Dashboard = () => {
               >
                 Bienvenido, {user.userName}
               </Typography>
+              <span>
+                Estimados, les solicitamos revisar sus datos registrados y si
+                existe algun faltante o inconsistencia, enviar un mail
+                comunicandolo a administracion@colegiociudadjardin.edu.ar.
+                Muchas Gracias
+              </span>
             </Box>
             <Container maxWidth="xl">
               <Box

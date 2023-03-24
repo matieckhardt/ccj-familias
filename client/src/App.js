@@ -55,6 +55,7 @@ export default function App() {
           <Route path="/Cupos" element={<Wrapper></Wrapper>} />
           <Route path="/Matriculados" element={<Wrapper></Wrapper>} />
           <Route path="/CodeGPT" element={<Wrapper></Wrapper>} />
+          <Route path="/Registrados" element={<Wrapper></Wrapper>} />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>
