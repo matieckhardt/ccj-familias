@@ -35,7 +35,9 @@ tallerCtrl.registrados = async (req, res) => {
 };
 
 tallerCtrl.registradosAll = async (req, res) => {
-  console.log(req.params);
+  console.log(req.params.curso);
+  console.log(req.params.taller);
+
   const registrados = await Alumnos.aggregate([
     {
       $match: {
