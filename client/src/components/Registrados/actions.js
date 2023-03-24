@@ -1,41 +1,24 @@
-/* 
-    El objeto que devuelve cada accion sera la comunicacion directa
-    hacia la funcion reductora que lo trabajara para cambiar el estado
-
-    El estandar es devolver un objeto con la siguiente estructura
-    {
-        type: "El tipo de accion a ejecutar",
-        payload: "La informacion a procesar de este tipo de accion"
-    }
-*/
-
 import {
-  CHANGE_DIVISION,
-  CHANGE_NIVEL,
-  CHANGE_NAME,
+  CHANGE_NOMBRE,
+  CHANGE_TALLER,
   CHANGE_CURSO,
-  CHANGE_EMAIL,
+  CHANGE_INSTRUMENTO,
+  CHANGE_DIVISION,
 } from "./constant";
 
-export const changeName = (name) => {
-  // return {
-  //     quieroHacerEsto: "Cambiar nombre",
-  //     actualizaEsto: name
-  // };
-
+export const changeNombre = (nombre) => {
   return {
-    type: CHANGE_NAME,
-    payload: name,
+    type: CHANGE_NOMBRE,
+    payload: nombre,
   };
 };
 
-export const changeNivel = (nivel) => {
+export const changeTaller = (taller) => {
   return {
-    type: CHANGE_NIVEL,
-    payload: nivel,
+    type: CHANGE_TALLER,
+    payload: taller,
   };
 };
-
 export const changeCurso = (curso) => {
   return {
     type: CHANGE_CURSO,
@@ -43,15 +26,15 @@ export const changeCurso = (curso) => {
   };
 };
 
+export const changeInstrumento = (instrumento) => {
+  return {
+    type: CHANGE_INSTRUMENTO,
+    payload: instrumento,
+  };
+};
 export const changeDivision = (division) => {
   return {
     type: CHANGE_DIVISION,
     payload: division,
-  };
-};
-export const changeEmail = (email) => {
-  return {
-    type: CHANGE_EMAIL,
-    payload: email,
   };
 };

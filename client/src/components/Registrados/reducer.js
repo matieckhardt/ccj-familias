@@ -1,49 +1,27 @@
 import {
-  CHANGE_DIVISION,
-  CHANGE_NIVEL,
-  CHANGE_NAME,
+  CHANGE_TALLER,
+  CHANGE_NOMBRE,
+  CHANGE_INSTRUMENTO,
   CHANGE_CURSO,
-  CHANGE_EMAIL,
+  CHANGE_DIVISION,
 } from "./constant";
 
-/* 
-    Las funcion reductora recibe dos parametros,
-
-    1 - El estado actual, o el store actual que se encuentra
-    2 - La action a realizar 
-
-    Las funciones reductoras tienen que seguir las siguientes reglas:
-
-    1 - Se debe devolver siempre algo o almenos el estado actual o store actual
-    2 - Debe ser una funcion pura.
-        - Una funcion pura es aquella que no cambia los valores de entrada
-            function ejemplo(name){
-                name = "otro nombre"; // Esto ya no es una funcion pura
-            }
-
-*/
 export const reducerFunction = (state, action) => {
-  // console.log(action);
-
   switch (action.type) {
-    case CHANGE_NAME:
-      // state.name = action.payload; // Ya no es una funcion pura
-      // return state;
+    case CHANGE_NOMBRE:
       return {
         ...state,
-        name: action.payload,
+        nombre: action.payload,
       };
-    case CHANGE_EMAIL:
-      // state.name = action.payload; // Ya no es una funcion pura
-      // return state;
+    case CHANGE_TALLER:
       return {
         ...state,
-        email: action.payload,
+        taller: action.payload,
       };
-    case CHANGE_NIVEL:
+    case CHANGE_INSTRUMENTO:
       return {
         ...state,
-        nivel: action.payload,
+        instrumento: action.payload,
       };
     case CHANGE_CURSO:
       return {
@@ -55,6 +33,7 @@ export const reducerFunction = (state, action) => {
         ...state,
         division: action.payload,
       };
+
     default:
       return state;
   }
