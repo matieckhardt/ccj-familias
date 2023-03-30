@@ -1,6 +1,5 @@
 const tallerCtrl = {};
-const Ajedrez = require("../models/Ajedrez");
-const Talleres = require("../models/Ajedrez");
+const Talleres = require("../models/Talleres");
 const Alumnos = require("../models/Alumnos");
 
 tallerCtrl.index = (req, res) => {
@@ -36,6 +35,27 @@ tallerCtrl.registrados = async (req, res) => {
 };
 
 tallerCtrl.registradosAll = async (req, res) => {
+  console.log(req.params.curso);
+  console.log(req.params.taller);
+
+  const registrados = await Alumnos.aggregate([
+    {
+      $match: {
+        curso: req.params.curso,
+      },
+    },
+    {
+      $match: {
+        taller: req.params.taller,
+      },
+    },
+  ]);
+
+  console.log("registrados", registrados);
+  res.json(registrados);
+};
+
+tallerCtrl.registradosAjedrez = async (req, res) => {
   console.log(req.params.curso);
   console.log(req.params.taller);
 
