@@ -72,6 +72,18 @@ function RegisterStudent() {
       const taller = tallerData.length ? tallerData[0].taller : "NO";
       item.TALLER = taller;
     }
+    for (const item of result) {
+      const registrado = await fetch(
+        "https://familias.colegiociudadjardin.edu.ar/api/v1/ajedrez/registrados/" +
+          item.NOMBRE +
+          ", " +
+          item.APELLIDO
+      );
+      const tallerData = await registrado.json();
+      console.log("registrado", tallerData);
+      const taller = tallerData.length ? "Inscripto" : "NO";
+      item.AJEDREZ = taller;
+    }
     console.log("result", result);
 
     setAlumno(result);
@@ -160,6 +172,9 @@ function RegisterStudent() {
                             </TableCell>
                             <TableCell key={Math.random()} align="left">
                               {e.TALLER}
+                            </TableCell>
+                            <TableCell key={Math.random()} align="left">
+                              {e.AJEDREZ}
                             </TableCell>
                           </TableRow>
                         ))}
