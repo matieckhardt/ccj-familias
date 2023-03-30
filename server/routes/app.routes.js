@@ -36,6 +36,7 @@ router.get("/talleres/registrados/:curso", tallerCtrl.registrados);
 router.get("/talleres/registrados/:curso/:taller", tallerCtrl.registradosAll);
 
 router.get("/instrumentos/registrados/:nombre", alumnosCtrl.tallerInscripto);
+router.get("/ajedrez/registrados/:nombre", alumnosCtrl.ajedrezInscripto);
 
 router.get("/Familias", sqlCtrl.getAll);
 router.get("/Familias/:mail", sqlCtrl.getFamilia);

@@ -1,4 +1,5 @@
 const alumnosCtrl = {};
+const Ajedrez = require("../models/Ajedrez");
 const Alumnos = require("../models/Alumnos");
 const Cursos = require("../models/alumnosCursos");
 
@@ -16,6 +17,14 @@ alumnosCtrl.listAlumnos = async (req, res) => {
 alumnosCtrl.tallerInscripto = async (req, res) => {
   console.log("alumno", req.params);
   const registrados = await Alumnos.find(req.params);
+
+  console.log("Alumnos Inscriptos", registrados);
+  res.json(registrados);
+};
+
+alumnosCtrl.ajedrezInscripto = async (req, res) => {
+  console.log("alumno", req.params);
+  const registrados = await Ajedrez.find(req.params);
 
   console.log("Alumnos Inscriptos", registrados);
   res.json(registrados);

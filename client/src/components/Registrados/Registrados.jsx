@@ -132,6 +132,7 @@ function RegisterStudent() {
                 value={cursoSel.payload}
                 onChange={handleChangeCurso}
               >
+                <MenuItem value="all">Todos</MenuItem>
                 {curso.map((e) => (
                   <MenuItem value={e}> {e}</MenuItem>
                 ))}
@@ -143,6 +144,7 @@ function RegisterStudent() {
                 value={tallerSel.payload}
                 onChange={handleChangeTaller}
               >
+                <MenuItem value="all">Todos</MenuItem>
                 {taller.map((e) => (
                   <MenuItem value={e}> {e}</MenuItem>
                 ))}

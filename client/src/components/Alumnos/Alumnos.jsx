@@ -128,6 +128,7 @@ function RegisterStudent() {
                           <TableCell align="left">DNI</TableCell>
                           <TableCell align="left">Legajo</TableCell>
                           <TableCell align="left">Instrumento</TableCell>
+                          <TableCell align="left">Ajedrez</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>

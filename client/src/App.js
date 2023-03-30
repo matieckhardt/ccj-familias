@@ -7,13 +7,14 @@ import { globalReducer } from "./redux/reducers/globalReducer";
 import { useReducer } from "react";
 import Wrapper from "./Wrapper";
 import Cupos from "./components/Cupos/Cupos";
+import HomePage from "./components/Home/Home";
 
 function AppPrincipal() {
   return (
     <div className="App">
       <div>
         {" "}
-        <Login />
+        <HomePage />
       </div>
     </div>
   );
@@ -46,7 +47,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AppPrincipal />} />
-          <Route path="/Login" element={<AppPrincipal />} />
+          <Route path="/Home" element={<AppPrincipal />} />
+          <Route path="/Login" element={<AppSecondary />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Mis%20Datos" element={<Wrapper></Wrapper>} />
           <Route path="/Mis%20Alumnos" element={<Wrapper></Wrapper>} />
