@@ -7,7 +7,6 @@ import { globalReducer } from "./redux/reducers/globalReducer";
 import { useReducer } from "react";
 import Wrapper from "./Wrapper";
 import Cupos from "./components/Cupos/Cupos";
-import HomePage from "./components/Home/Home";
 
 function AppPrincipal() {
   return (
