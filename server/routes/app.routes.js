@@ -4,6 +4,7 @@ const abmCtrl = require("../controllers/abm.controller");
 const authCtrl = require("../controllers/auth.controller");
 const alumnosCtrl = require("../controllers/alumnos.controller");
 const alumnosCursosCtrl = require("../controllers/alumnosCursos.controller");
+const ajedrezCtrl = require("../controllers/ajedrez.controller");
 
 const cuposCtrl = require("../controllers/cupos.controller");
 //const mhgCtrl = require("../controllers/mhg.controller");
@@ -35,8 +36,10 @@ router.get(
   tallerCtrl.registradosAjedrez
 );
 
+//rutas AJEDREZ
 router.get("/instrumentos/registrados/:nombre", alumnosCtrl.tallerInscripto);
 router.get("/ajedrez/registrados/:nombre", alumnosCtrl.ajedrezInscripto);
+router.post("/ajedrez/register", ajedrezCtrl.createAlumno);
 
 router.get("/Familias", sqlCtrl.getAll);
 router.get("/Familias/:mail", sqlCtrl.getFamilia);

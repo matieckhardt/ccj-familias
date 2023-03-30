@@ -1,4 +1,6 @@
-const API_URL = process.env.REACT_APP_API_URL || "https://familias.colegiociudadjardin.edu.ar/api/v1";
+const API_URL =
+  process.env.REACT_APP_API_URL ||
+  "https://familias.colegiociudadjardin.edu.ar/api/v1";
 const API_AUTH_URL = API_URL;
 
 export const handleRegister = async (
@@ -10,8 +12,7 @@ export const handleRegister = async (
   legajo
 ) => {
   const data = { nombre, apellido, curso, idCurso, dni, legajo };
-  console.log("test", data);
-  const response = await fetch(API_AUTH_URL + "/matriculados/register", {
+  const response = await fetch(API_AUTH_URL + "/ajedrez/register", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
