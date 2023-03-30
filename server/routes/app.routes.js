@@ -34,6 +34,8 @@ router.post("/cupos/delete/:id", cuposCtrl.deleteCupo);
 router.post("/taller/register", tallerCtrl.createTaller);
 router.get("/talleres/registrados/:curso", tallerCtrl.registrados);
 router.get("/talleres/registrados/:curso/:taller", tallerCtrl.registradosAll);
+router.get("/talleres/registrados/ajedrez/:curso", tallerCtrl.registradosAjedrez;
+
 
 router.get("/instrumentos/registrados/:nombre", alumnosCtrl.tallerInscripto);
 router.get("/ajedrez/registrados/:nombre", alumnosCtrl.ajedrezInscripto);
