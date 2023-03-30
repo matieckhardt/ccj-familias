@@ -14,7 +14,7 @@ function AppPrincipal() {
     <div className="App">
       <div>
         {" "}
-        <HomePage />
+        <Login />
       </div>
     </div>
   );
