@@ -1,5 +1,5 @@
 const tallerCtrl = {};
-const Talleres = require("../models/Talleres");
+const Ajedrez = require("../models/Ajedrez");
 const Alumnos = require("../models/Alumnos");
 
 tallerCtrl.index = (req, res) => {
