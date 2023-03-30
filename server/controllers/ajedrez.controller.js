@@ -3,18 +3,18 @@ const Ajedrez = require("../models/Ajedrez");
 const Alumnos = require("../models/Alumnos");
 const Cursos = require("../models/alumnosCursos");
 
-alumnosCtrl.index = (req, res) => {
+ajedrezCtrl.index = (req, res) => {
   res.render("users", { active: { users: true } });
 };
 
-alumnosCtrl.listAlumnos = async (req, res) => {
+ajedrezCtrl.listAlumnos = async (req, res) => {
   const alumnos = await Alumnos.find(req.params);
 
   console.log(alumnos);
   res.json(alumnos);
 };
 
-alumnosCtrl.tallerInscripto = async (req, res) => {
+ajedrezCtrl.tallerInscripto = async (req, res) => {
   console.log("alumno", req.params);
   const registrados = await Alumnos.find(req.params);
 
@@ -22,7 +22,7 @@ alumnosCtrl.tallerInscripto = async (req, res) => {
   res.json(registrados);
 };
 
-alumnosCtrl.ajedrezInscripto = async (req, res) => {
+ajedrezCtrl.ajedrezInscripto = async (req, res) => {
   console.log("alumno", req.params);
   const registrados = await Ajedrez.find(req.params);
 
@@ -30,7 +30,7 @@ alumnosCtrl.ajedrezInscripto = async (req, res) => {
   res.json(registrados);
 };
 
-alumnosCtrl.createAlumno = async (req, res, next) => {
+ajedrezCtrl.createAlumno = async (req, res, next) => {
   try {
     const userData = req.body;
     const user = await Ajedrez.create(userData);
