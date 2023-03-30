@@ -33,6 +33,7 @@ ajedrezCtrl.ajedrezInscripto = async (req, res) => {
 ajedrezCtrl.createAlumno = async (req, res, next) => {
   try {
     const userData = req.body;
+    console.log(userData);
     const user = await Ajedrez.create(userData);
     return res
       .status(201)
