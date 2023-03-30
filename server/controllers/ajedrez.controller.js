@@ -1,5 +1,7 @@
 const ajedrezCtrl = {};
 const Ajedrez = require("../models/Ajedrez");
+const Alumnos = require("../models/Alumnos");
+const Cursos = require("../models/alumnosCursos");
 
 alumnosCtrl.index = (req, res) => {
   res.render("users", { active: { users: true } });
