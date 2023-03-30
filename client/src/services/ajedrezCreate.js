@@ -3,15 +3,8 @@ const API_URL =
   "https://familias.colegiociudadjardin.edu.ar/api/v1";
 const API_AUTH_URL = API_URL;
 
-export const handleRegister = async (
-  nombre,
-  apellido,
-  curso,
-  idCurso,
-  dni,
-  legajo
-) => {
-  const data = { nombre, apellido, curso, idCurso, dni, legajo };
+export const handleRegister = async (nombre, curso, taller) => {
+  const data = { nombre, curso, taller };
   const response = await fetch(API_AUTH_URL + "/ajedrez/register", {
     method: "POST",
     body: JSON.stringify(data),
