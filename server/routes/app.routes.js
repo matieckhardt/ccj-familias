@@ -9,8 +9,6 @@ const cuposCtrl = require("../controllers/cupos.controller");
 //const mhgCtrl = require("../controllers/mhg.controller");
 const tallerCtrl = require("../controllers/taller.controller");
 const sqlCtrl = require("../controllers/sql.controller");
-const matriCtrl = require("../controllers/matriculados.controller");
-
 const { authMiddleware } = require("../middlewares/authMiddleware");
 
 router.get("/auth/users", abmCtrl.listUsers);
@@ -20,8 +18,6 @@ router.get("/auth/user/:profile", abmCtrl.loguedUser);
 
 router.get("/alumnos/list/:email", alumnosCtrl.listAlumnos);
 router.post("/alumnos/register", alumnosCtrl.createAlumno);
-
-router.post("/matriculados/register", matriCtrl.createAlumno);
 
 //router.get("/data/list/", mhgCtrl.listData);
 //router.get("/data/find/:mailPadre", mhgCtrl.findData);
