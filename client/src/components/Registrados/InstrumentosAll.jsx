@@ -66,25 +66,25 @@ const headCells = [
   {
     id: "curso",
     numeric: true,
-    disablePadding: false,
+    disablePadding: true,
     label: "Curso",
   },
   {
     id: "taller",
     numeric: true,
-    disablePadding: false,
+    disablePadding: true,
     label: "Taller",
   },
   {
     id: "instrumento",
     numeric: true,
-    disablePadding: false,
+    disablePadding: true,
     label: "Instrumento",
   },
   {
     id: "fecha",
     numeric: true,
-    disablePadding: false,
+    disablePadding: true,
     label: "Fecha de Inscripcion",
   },
 ];
@@ -224,16 +224,18 @@ export default function EnhancedTable() {
   const [paddingHeight, setPaddingHeight] = React.useState(0);
   const [rows, setRows] = React.useState([]);
 
-  React.useEffect(() => {
-    const ajedrezData = async function (res, req) {
-      const response = await fetch(
-        "https://familias.colegiociudadjardin.edu.ar/api/v1/instrumentos/registrados"
-      );
-      const rows = await response.json();
+  const instrumentosData = async function (res, req) {
+    const response = await fetch(
+      "https://familias.colegiociudadjardin.edu.ar/api/v1/instrumentos/registrados"
+    );
+    const rows = await response.json();
+    setRows(rows);
+    setVisibleRows(rows);
+  };
 
-      setRows(rows);
-    };
-    ajedrezData();
+  React.useEffect(() => {
+    instrumentosData();
+
     let rowsOnMount = stableSort(
       rows,
       getComparator(DEFAULT_ORDER, DEFAULT_ORDER_BY)

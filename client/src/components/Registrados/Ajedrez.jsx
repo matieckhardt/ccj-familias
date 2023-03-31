@@ -220,6 +220,7 @@ export default function EnhancedTable() {
       const rows = await response.json();
 
       setRows(rows);
+      setVisibleRows(rows);
     };
     ajedrezData();
     let rowsOnMount = stableSort(
