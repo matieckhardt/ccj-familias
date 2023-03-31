@@ -65,27 +65,27 @@ const headCells = [
   },
   {
     id: "curso",
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: "Curso",
   },
   {
     id: "taller",
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: "Taller",
   },
   {
     id: "instrumento",
-    numeric: false,
+    numeric: true,
     disablePadding: false,
-    label: "instrumento",
+    label: "Instrumento",
   },
   {
     id: "fecha",
     numeric: true,
     disablePadding: false,
-    label: "fecha de inscripcion",
+    label: "Fecha de Inscripcion",
   },
 ];
 
@@ -188,7 +188,7 @@ function EnhancedTableToolbar(props) {
           id="tableTitle"
           component="div"
         >
-          Nutrition
+          Alumnos Inscriptos
         </Typography>
       )}
 
@@ -380,7 +380,7 @@ export default function EnhancedTable() {
                   fontWeight: 800,
                 }}
               >
-                Registrados
+                Alumnos Registrados en Instrumentos
               </Typography>
               <Paper elevation={3}></Paper>
               <Box sx={{ width: "100%" }}>

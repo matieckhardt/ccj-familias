@@ -368,7 +368,7 @@ export default function EnhancedTable() {
                   fontWeight: 800,
                 }}
               >
-                Registrados
+                Alumnos Registrados en Ajedrez
               </Typography>
               <Paper elevation={3}></Paper>
               <Box sx={{ width: "100%" }}>
