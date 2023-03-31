@@ -24,7 +24,7 @@ alumnosCtrl.tallerInscripto = async (req, res) => {
 
 alumnosCtrl.ajedrezInscripto = async (req, res) => {
   console.log("alumno", req.params);
-  const registrados = await Ajedrez.find(req.params);
+  const registrados = await Ajedrez.find();
 
   console.log("Alumnos Inscriptos", registrados);
   res.json(registrados);

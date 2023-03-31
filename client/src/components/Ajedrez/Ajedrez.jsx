@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/store";
 import { changeNombre, changeCurso, changeTaller } from "./actions";
 import { reducerFunction } from "./reducer";
-import { handleRegister } from "../../services/ajedrezCreate";
+import { handleRegister } from "../../services/tallerCreate";
 import { toast } from "react-hot-toast";
 import { changeRegisteredIn } from "../../redux/actions/globalActions";
 import React from "react";
@@ -123,6 +123,7 @@ function RegisterAjedrez() {
       .then((response) => {
         dispatch(changeRegisteredIn(true));
         toast.success("Taller created Succesfully");
+        navigate("/login");
       })
       .catch((error) => {
         setHasErrorLogin(true);
