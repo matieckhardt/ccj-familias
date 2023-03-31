@@ -25,14 +25,13 @@ ajedrezCtrl.tallerInscripto = async (req, res) => {
 ajedrezCtrl.ajedrezInscripto = async (req, res) => {
   console.log("alumno", req.params);
   const registrados = await Ajedrez.find(req.params);
+};
+ajedrezCtrl.ajedrezAll = async (req, res) => {
+  console.log("alumno", req.params);
+  const registrados = await Ajedrez.find();
 
-  ajedrezCtrl.ajedrezAll = async (req, res) => {
-    console.log("alumno", req.params);
-    const registrados = await Ajedrez.find();
-
-    console.log("Alumnos Inscriptos", registrados);
-    res.json(registrados);
-  };
+  console.log("Alumnos Inscriptos", registrados);
+  res.json(registrados);
 
   console.log("Alumnos Inscriptos", registrados);
   res.json(registrados);
