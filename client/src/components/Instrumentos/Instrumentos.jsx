@@ -200,7 +200,7 @@ function RegisterTaller() {
                   fontWeight: 800,
                 }}
               >
-                Inscripcion a Taller de Insrtumento 2023
+                Inscripcion a Taller de Instrumento 2023
               </Typography>
               <Typography
                 variant="body1"

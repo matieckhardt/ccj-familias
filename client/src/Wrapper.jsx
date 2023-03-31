@@ -2,7 +2,7 @@ import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
 import SideBar from "./components/SideBar/SideBar";
 import Alumnos from "./components/Alumnos/Alumnos";
-import Talleres from "./components/Talleres/Talleres";
+import Talleres from "./components/Instrumentos/Instrumentos";
 import Ajedrez from "./components/Ajedrez/Ajedrez";
 import Cupos from "./components/Cupos/Cupos";
 import CodeGPT from "./components/CodeGPT/CodeGPT";

@@ -28,7 +28,6 @@ sqlCtrl.getLegajosAll = async (req, res) => {
   try {
     const padres = await Legajos.findAll({ raw: true });
     const filterEgresados = padres.filter((e) => e.FECHA_EGR1 === null);
-    console.log("donde pija estas", filterEgresados);
     res.json(filterEgresados);
   } catch (error) {
     return console.log(error);
@@ -42,7 +41,6 @@ sqlCtrl.getLegajos = async (req, res) => {
       where: { CODFAM: req.params.CODFAM },
       raw: true,
     });
-    console.log(padres);
     res.json(padres);
   } catch (error) {
     return console.log(error);

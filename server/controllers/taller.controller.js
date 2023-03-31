@@ -15,14 +15,12 @@ tallerCtrl.listTalleres = async (req, res) => {
     },
   ]);
 
-  console.log(tallerList);
   res.json(tallerList);
 };
 
 tallerCtrl.listTaller = async (req, res) => {
   const tallerList = await Talleres.find();
 
-  console.log(tallerList);
   res.json(tallerList);
 };
 
@@ -30,7 +28,6 @@ tallerCtrl.registrados = async (req, res) => {
   console.log(req.params);
   const registrados = await Alumnos.find(req.params);
 
-  console.log("registrados", registrados);
   res.json(registrados);
 };
 
@@ -51,14 +48,10 @@ tallerCtrl.registradosAll = async (req, res) => {
     },
   ]);
 
-  console.log("registrados", registrados);
   res.json(registrados);
 };
 
 tallerCtrl.registradosAjedrez = async (req, res) => {
-  console.log(req.params.curso);
-  console.log(req.params.taller);
-
   const registrados = await Ajedrez.aggregate([
     {
       $match: {
@@ -71,8 +64,6 @@ tallerCtrl.registradosAjedrez = async (req, res) => {
       },
     },
   ]);
-
-  console.log("registrados", registrados);
   res.json(registrados);
 };
 

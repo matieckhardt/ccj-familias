@@ -1,18 +1,5 @@
 const ajedrezCtrl = {};
 const Ajedrez = require("../models/Ajedrez");
-const Alumnos = require("../models/Alumnos");
-const Cursos = require("../models/alumnosCursos");
-
-ajedrezCtrl.index = (req, res) => {
-  res.render("users", { active: { users: true } });
-};
-
-ajedrezCtrl.listAlumnos = async (req, res) => {
-  const alumnos = await Alumnos.find(req.params);
-
-  console.log(alumnos);
-  res.json(alumnos);
-};
 
 ajedrezCtrl.ajedrezInscripto = async (req, res) => {
   const registrados = await Ajedrez.find(req.params);

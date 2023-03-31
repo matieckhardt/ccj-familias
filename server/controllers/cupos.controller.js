@@ -1,10 +1,6 @@
 const cuposCtrl = {};
 const Cupos = require("../models/Cupos");
 
-cuposCtrl.index = (req, res) => {
-  res.render("users", { active: { users: true } });
-};
-
 cuposCtrl.listTalleres = async (req, res) => {
   const cuposList = await Cupos.aggregate([
     {
