@@ -58,13 +58,10 @@ export default function App() {
           <Route path="/Matriculados" element={<Wrapper></Wrapper>} />
           <Route path="/CodeGPT" element={<Wrapper></Wrapper>} />
           <Route
-            path="/Registrados/Instrumentos"
+            path="/InstrumentosReg"
             element={<Registrados></Registrados>}
           />
-          <Route
-            path="/Registrados/Ajedrez"
-            element={<AjedrezReg></AjedrezReg>}
-          />
+          <Route path="/AjedrezReg" element={<AjedrezReg></AjedrezReg>} />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>

@@ -57,13 +57,6 @@ app.get("/Dashboard", authMiddleware, (req, res) => {
   res.sendFile(clientRoute + "/index.html");
 });
 
-app.get("/Registrados/Ajedrez", (req, res) => {
-  res.sendFile(clientRoute + "/index.html");
-});
-app.get("/Registrados/Instrumentos", (req, res) => {
-  res.sendFile(clientRoute + "/index.html");
-});
-
 app.get("/*", (req, res) => {
   res.sendFile(clientRoute + "/index.html");
 });
