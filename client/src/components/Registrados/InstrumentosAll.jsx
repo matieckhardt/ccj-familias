@@ -384,6 +384,17 @@ export default function EnhancedTable() {
               >
                 Alumnos Registrados en Instrumentos
               </Typography>
+              <Typography
+                variant="h5"
+                sx={{
+                  textAlign: "center",
+                  marginTop: "10px",
+                  color: "#1876D1",
+                  fontWeight: 800,
+                }}
+              >
+                (incluyendo lista de espera)
+              </Typography>
               <Paper elevation={3}></Paper>
               <Box sx={{ width: "100%" }}>
                 <Paper sx={{ width: "100%", mb: 2 }}>
