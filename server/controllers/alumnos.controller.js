@@ -8,9 +8,14 @@ alumnosCtrl.index = (req, res) => {
 
 alumnosCtrl.listAlumnos = async (req, res) => {
   const alumnos = await Alumnos.find(req.params);
+
   res.json(alumnos);
 };
 
+alumnosCtrl.tallerInscripto = async (req, res) => {
+  const registrados = await Alumnos.find(req.params);
+  res.json(registrados);
+};
 alumnosCtrl.instrumentosAll = async (req, res) => {
   const registrados = await Alumnos.find();
   res.json(registrados);
