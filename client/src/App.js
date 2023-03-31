@@ -6,7 +6,8 @@ import { AppContext } from "./context/store";
 import { globalReducer } from "./redux/reducers/globalReducer";
 import { useReducer } from "react";
 import Wrapper from "./Wrapper";
-import Cupos from "./components/Cupos/Cupos";
+import Registrados from "./components/Registrados/Instrumentos";
+import AjedrezReg from "./components/Registrados/Ajedrez";
 
 function AppPrincipal() {
   return (
@@ -58,9 +59,12 @@ export default function App() {
           <Route path="/CodeGPT" element={<Wrapper></Wrapper>} />
           <Route
             path="/Registrados/Instrumentos"
-            element={<Wrapper></Wrapper>}
+            element={<Registrados></Registrados>}
           />
-          <Route path="/Registrados/Ajedrez" element={<Wrapper></Wrapper>} />
+          <Route
+            path="/Registrados/Ajedrez"
+            element={<AjedrezReg></AjedrezReg>}
+          />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>

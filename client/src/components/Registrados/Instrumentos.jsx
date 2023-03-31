@@ -15,6 +15,7 @@ import {
   TextField,
   Grid,
 } from "@mui/material";
+import Nav from "../Nav/Nav";
 
 import { changeCurso, changeTaller } from "./actions";
 import { reducerFunction } from "./reducer";
@@ -83,226 +84,240 @@ function RegisterStudent() {
   };
 
   return (
-    <Container maxWidth="xl">
-      <Box
-        sx={{
-          marginLeft: "18%",
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: "100%",
-            height: "30vh",
-          },
-        }}
-      >
-        <Paper elevation={3}>
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": { m: 1, width: "20ch" },
-            }}
-            noValidate
-          >
-            <Typography
-              variant="h4"
-              sx={{
-                textAlign: "center",
-                marginTop: "50px",
-                marginBottom: "20px",
-                color: "#1876D1",
-                fontWeight: 800,
-              }}
-            >
-              {" "}
-              Alumnos Inscriptos en Instrumentos{" "}
-            </Typography>
+    <>
+      <Nav></Nav>
+      <Container>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            "& > :not(style)": {
+              m: 1,
+              width: "100%",
+              height: "30vh",
+            },
+          }}
+        >
+          <Paper elevation={3}>
             <Box
               component="form"
-              onSubmit={""}
               sx={{
                 "& .MuiTextField-root": { m: 1, width: "20ch" },
               }}
               noValidate
             >
-              <TextField
-                select
-                label="Curso"
-                name={""}
-                value={cursoSel.payload}
-                onChange={handleChangeCurso}
+              <Typography
+                variant="h4"
+                sx={{
+                  textAlign: "center",
+                  marginTop: "50px",
+                  marginBottom: "20px",
+                  color: "#1876D1",
+                  fontWeight: 800,
+                }}
               >
-                <MenuItem value="all">Todos</MenuItem>
-                {curso.map((e) => (
-                  <MenuItem value={e}> {e}</MenuItem>
-                ))}
-              </TextField>
-              <TextField
-                select
-                label="Taller"
-                name={""}
-                value={tallerSel.payload}
-                onChange={handleChangeTaller}
+                {" "}
+                Alumnos Inscriptos en Instrumentos{" "}
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={""}
+                sx={{
+                  "& .MuiTextField-root": { m: 1, width: "30ch" },
+                  "& button": { m: 1, height: "7ch" },
+                  textAlign: "center",
+                }}
+                noValidate
               >
-                <MenuItem value="all">Todos</MenuItem>
-                {taller.map((e) => (
-                  <MenuItem value={e}> {e}</MenuItem>
-                ))}
-              </TextField>
-              <Button onClick={getClaseData}>Filtrar</Button>
+                <TextField
+                  select
+                  label="Curso"
+                  name={""}
+                  value={cursoSel.payload}
+                  onChange={handleChangeCurso}
+                >
+                  <MenuItem value="all">Todos</MenuItem>
+                  {curso.map((e) => (
+                    <MenuItem value={e}> {e}</MenuItem>
+                  ))}
+                </TextField>
+                <TextField
+                  select
+                  label="Taller"
+                  name={""}
+                  value={tallerSel.payload}
+                  onChange={handleChangeTaller}
+                >
+                  <MenuItem value="all">Todos</MenuItem>
+                  {taller.map((e) => (
+                    <MenuItem value={e}> {e}</MenuItem>
+                  ))}
+                </TextField>
+                <Button variant="outlined" onClick={getClaseData}>
+                  Filtrar
+                </Button>
+              </Box>
             </Box>
-          </Box>
-        </Paper>
-        <Grid wrap="nowrap">
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": { m: 1, width: "20ch" },
-            }}
-            noValidate
-          >
-            <Container sx={{ color: "#1876D1" }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  textAlign: "center",
-                  marginTop: "10px",
-                  color: "#1876D1",
-                  fontWeight: 800,
-                }}
-              >
-                Registrados
-              </Typography>
-              <Paper elevation={3}>
-                <TableContainer sx={{ textAlign: "center" }}>
-                  <Table aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Nombre</TableCell>
-                        <TableCell align="left">Curso</TableCell>
-                        <TableCell align="left">Taller</TableCell>
-                        <TableCell align="left">Instrumento</TableCell>
-                        <TableCell align="left">Fecha de inscripcion</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {clase
-                        .sort(
-                          (a, b) =>
-                            new Date(a.createdAt) - new Date(b.createdAt)
-                        )
-                        .slice(0, 6)
-                        .map((e) => (
-                          <TableRow
-                            key={e._id}
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              key={e.nombre}
+          </Paper>
+          <Grid wrap="nowrap">
+            <Box
+              component="form"
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "20ch" },
+              }}
+              noValidate
+            >
+              <Container sx={{ color: "#1876D1" }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    textAlign: "center",
+                    marginTop: "10px",
+                    color: "#1876D1",
+                    fontWeight: 800,
+                  }}
+                >
+                  Registrados
+                </Typography>
+                <Paper elevation={3}>
+                  <TableContainer sx={{ textAlign: "center" }}>
+                    <Table aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Nombre</TableCell>
+                          <TableCell align="left">Curso</TableCell>
+                          <TableCell align="left">Taller</TableCell>
+                          <TableCell align="left">Instrumento</TableCell>
+                          <TableCell align="left">
+                            Fecha de inscripcion
+                          </TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {clase
+                          .sort(
+                            (a, b) =>
+                              new Date(a.createdAt) - new Date(b.createdAt)
+                          )
+                          .slice(0, 6)
+                          .map((e) => (
+                            <TableRow
+                              key={e._id}
+                              sx={{
+                                "&:last-child td, &:last-child th": {
+                                  border: 0,
+                                },
+                              }}
                             >
-                              {e.nombre}
-                            </TableCell>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                key={e.nombre}
+                              >
+                                {e.nombre}
+                              </TableCell>
 
-                            <TableCell key={Math.random()} align="left">
-                              {e.curso}
-                            </TableCell>
-                            <TableCell key={Math.random()} align="left">
-                              {e.taller}
-                            </TableCell>
-                            <TableCell key={Math.random()} align="left">
-                              {e.instrumento}
-                            </TableCell>
-                            <TableCell key={Math.random()} align="left">
-                              {e.createdAt}
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Paper>
-            </Container>
-          </Box>
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": { m: 1, width: "20ch" },
-            }}
-            noValidate
-          >
-            <Container sx={{ marginTop: "auto", color: "#1876D1" }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  textAlign: "center",
-                  marginTop: "60px",
-                  color: "#1876D1",
-                  fontWeight: 800,
-                }}
-              >
-                Lista de Espera
-              </Typography>
-              <Paper elevation={3}>
-                <TableContainer sx={{ marginTop: "5%", textAlign: "center" }}>
-                  <Table aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Nombre</TableCell>
-                        <TableCell align="left">Curso</TableCell>
-                        <TableCell align="left">Taller</TableCell>
-                        <TableCell align="left">Instrumento</TableCell>
-                        <TableCell align="left">Fecha de inscripcion</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {clase
-                        .sort(
-                          (a, b) =>
-                            new Date(a.createdAt) - new Date(b.createdAt)
-                        )
-                        .slice(6)
-                        .map((e) => (
-                          <TableRow
-                            key={e._id}
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              key={e.nombre}
+                              <TableCell key={Math.random()} align="left">
+                                {e.curso}
+                              </TableCell>
+                              <TableCell key={Math.random()} align="left">
+                                {e.taller}
+                              </TableCell>
+                              <TableCell key={Math.random()} align="left">
+                                {e.instrumento}
+                              </TableCell>
+                              <TableCell key={Math.random()} align="left">
+                                {e.createdAt}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Paper>
+              </Container>
+            </Box>
+            <Box
+              component="form"
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "20ch" },
+              }}
+              noValidate
+            >
+              <Container sx={{ marginTop: "auto", color: "#1876D1" }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    textAlign: "center",
+                    marginTop: "60px",
+                    color: "#1876D1",
+                    fontWeight: 800,
+                  }}
+                >
+                  Lista de Espera
+                </Typography>
+                <Paper elevation={3}>
+                  <TableContainer sx={{ marginTop: "5%", textAlign: "center" }}>
+                    <Table aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Nombre</TableCell>
+                          <TableCell align="left">Curso</TableCell>
+                          <TableCell align="left">Taller</TableCell>
+                          <TableCell align="left">Instrumento</TableCell>
+                          <TableCell align="left">
+                            Fecha de inscripcion
+                          </TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {clase
+                          .sort(
+                            (a, b) =>
+                              new Date(a.createdAt) - new Date(b.createdAt)
+                          )
+                          .slice(6)
+                          .map((e) => (
+                            <TableRow
+                              key={e._id}
+                              sx={{
+                                "&:last-child td, &:last-child th": {
+                                  border: 0,
+                                },
+                              }}
                             >
-                              {e.nombre}
-                            </TableCell>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                key={e.nombre}
+                              >
+                                {e.nombre}
+                              </TableCell>
 
-                            <TableCell key={Math.random()} align="left">
-                              {e.curso}
-                            </TableCell>
-                            <TableCell key={Math.random()} align="left">
-                              {e.taller}
-                            </TableCell>
-                            <TableCell key={Math.random()} align="left">
-                              {e.instrumento}
-                            </TableCell>
-                            <TableCell key={Math.random()} align="left">
-                              {e.createdAt}
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Paper>
-            </Container>
-          </Box>
-        </Grid>
-      </Box>
-    </Container>
+                              <TableCell key={Math.random()} align="left">
+                                {e.curso}
+                              </TableCell>
+                              <TableCell key={Math.random()} align="left">
+                                {e.taller}
+                              </TableCell>
+                              <TableCell key={Math.random()} align="left">
+                                {e.instrumento}
+                              </TableCell>
+                              <TableCell key={Math.random()} align="left">
+                                {e.createdAt}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Paper>
+              </Container>
+            </Box>
+          </Grid>
+        </Box>
+      </Container>
+    </>
   );
 }
 
