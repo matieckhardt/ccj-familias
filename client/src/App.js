@@ -9,6 +9,7 @@ import Wrapper from "./Wrapper";
 import Registrados from "./components/Registrados/Instrumentos";
 import AjedrezReg from "./components/Registrados/Ajedrez";
 import InstrumentosAll from "./components/Registrados/InstrumentosAll";
+import { redirect } from "react-router-dom";
 
 function AppPrincipal() {
   return (
@@ -67,6 +68,10 @@ export default function App() {
             element={<InstrumentosAll></InstrumentosAll>}
           />
           <Route path="/AjedrezReg" element={<AjedrezReg></AjedrezReg>} />
+          <Route
+            path="/Registrados"
+            element={<InstrumentosAll></InstrumentosAll>}
+          />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>
