@@ -26,6 +26,14 @@ ajedrezCtrl.ajedrezInscripto = async (req, res) => {
   console.log("alumno", req.params);
   const registrados = await Ajedrez.find(req.params);
 
+  alumnosCtrl.ajedrezAll = async (req, res) => {
+    console.log("alumno", req.params);
+    const registrados = await Ajedrez.find();
+
+    console.log("Alumnos Inscriptos", registrados);
+    res.json(registrados);
+  };
+
   console.log("Alumnos Inscriptos", registrados);
   res.json(registrados);
 };

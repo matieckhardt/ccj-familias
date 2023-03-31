@@ -36,10 +36,11 @@ router.get(
   tallerCtrl.registradosAjedrez
 );
 
-//rutas AJEDREZ
 router.get("/instrumentos/registrados/:nombre", alumnosCtrl.tallerInscripto);
-router.get("/ajedrez/registrados/:nombre", alumnosCtrl.ajedrezInscripto);
-router.get("/ajedrez/registrados", alumnosCtrl.ajedrezAll);
+
+//rutas AJEDREZ
+router.get("/ajedrez/registrados/:nombre", ajedrezCtrl.ajedrezInscripto);
+router.get("/ajedrez/registrados", ajedrezCtrl.ajedrezAll);
 router.post("/ajedrez/register", ajedrezCtrl.createAlumno);
 
 router.get("/Familias", sqlCtrl.getAll);
