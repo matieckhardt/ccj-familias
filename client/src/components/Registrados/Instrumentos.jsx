@@ -10,16 +10,12 @@ import {
   TableRow,
   TableHead,
   Container,
-  Select,
-  FormControl,
   TextField,
   Grid,
 } from "@mui/material";
 import Nav from "../Nav/Nav";
 
 import { changeCurso, changeTaller } from "./actions";
-import { reducerFunction } from "./reducer";
-
 function RegisterStudent() {
   const [cupos, setCupo] = React.useState([]);
 
@@ -33,11 +29,8 @@ function RegisterStudent() {
   };
 
   const curso = Array.from(new Set(cupos.map((item) => item.curso)));
-  console.log(curso);
   const taller = Array.from(new Set(cupos.map((item) => item.name)));
-  console.log(taller);
 
-  const { dispatch } = useContext(AppContext);
   const [User, setUser] = React.useState([]);
   const [clase, setClase] = React.useState([]);
 
