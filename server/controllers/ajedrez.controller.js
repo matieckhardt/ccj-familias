@@ -14,26 +14,12 @@ ajedrezCtrl.listAlumnos = async (req, res) => {
   res.json(alumnos);
 };
 
-ajedrezCtrl.tallerInscripto = async (req, res) => {
-  console.log("alumno", req.params);
-  const registrados = await Alumnos.find(req.params);
-
-  console.log("Alumnos Inscriptos", registrados);
-  res.json(registrados);
-};
-
 ajedrezCtrl.ajedrezInscripto = async (req, res) => {
-  console.log("alumno", req.params);
   const registrados = await Ajedrez.find(req.params);
+  res.json(registrados);
 };
 ajedrezCtrl.ajedrezAll = async (req, res) => {
-  console.log("alumno", req.params);
   const registrados = await Ajedrez.find();
-
-  console.log("Alumnos Inscriptos", registrados);
-  res.json(registrados);
-
-  console.log("Alumnos Inscriptos", registrados);
   res.json(registrados);
 };
 

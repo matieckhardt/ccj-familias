@@ -8,8 +8,6 @@ alumnosCtrl.index = (req, res) => {
 
 alumnosCtrl.listAlumnos = async (req, res) => {
   const alumnos = await Alumnos.find(req.params);
-
-  console.log(alumnos);
   res.json(alumnos);
 };
 
