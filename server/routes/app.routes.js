@@ -37,6 +37,7 @@ router.get(
 );
 
 router.get("/instrumentos/registrados/:nombre", alumnosCtrl.tallerInscripto);
+router.get("/instrumentos/registrados", alumnosCtrl.tallerInscripto);
 
 //rutas AJEDREZ
 router.get("/ajedrez/registrados/:nombre", ajedrezCtrl.ajedrezInscripto);

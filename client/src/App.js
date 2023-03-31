@@ -8,6 +8,7 @@ import { useReducer } from "react";
 import Wrapper from "./Wrapper";
 import Registrados from "./components/Registrados/Instrumentos";
 import AjedrezReg from "./components/Registrados/Ajedrez";
+import InstrumentosAll from "./components/Registrados/InstrumentosAll";
 
 function AppPrincipal() {
   return (
@@ -60,6 +61,10 @@ export default function App() {
           <Route
             path="/InstrumentosReg"
             element={<Registrados></Registrados>}
+          />
+          <Route
+            path="/InstrumentosAll"
+            element={<InstrumentosAll></InstrumentosAll>}
           />
           <Route path="/AjedrezReg" element={<AjedrezReg></AjedrezReg>} />
         </Routes>

@@ -65,15 +65,27 @@ const headCells = [
   },
   {
     id: "curso",
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: "Curso",
   },
   {
     id: "taller",
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: "Taller",
+  },
+  {
+    id: "instrumento",
+    numeric: false,
+    disablePadding: false,
+    label: "instrumento",
+  },
+  {
+    id: "fecha",
+    numeric: true,
+    disablePadding: false,
+    label: "fecha de inscripcion",
   },
 ];
 
@@ -215,7 +227,7 @@ export default function EnhancedTable() {
   React.useEffect(() => {
     const ajedrezData = async function (res, req) {
       const response = await fetch(
-        "https://familias.colegiociudadjardin.edu.ar/api/v1/ajedrez/registrados"
+        "https://familias.colegiociudadjardin.edu.ar/api/v1/instrumentos/registrados"
       );
       const rows = await response.json();
 
@@ -429,6 +441,12 @@ export default function EnhancedTable() {
                                   </TableCell>
                                   <TableCell align="right">
                                     {row.taller}
+                                  </TableCell>
+                                  <TableCell align="right">
+                                    {row.instrumento}
+                                  </TableCell>
+                                  <TableCell align="right">
+                                    {row.createdAt}
                                   </TableCell>
                                 </TableRow>
                               );

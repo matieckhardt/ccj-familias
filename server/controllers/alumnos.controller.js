@@ -11,8 +11,8 @@ alumnosCtrl.listAlumnos = async (req, res) => {
   res.json(alumnos);
 };
 
-alumnosCtrl.tallerInscripto = async (req, res) => {
-  const registrados = await Alumnos.find(req.params);
+alumnosCtrl.instrumentosAll = async (req, res) => {
+  const registrados = await Alumnos.find();
   res.json(registrados);
 };
 
