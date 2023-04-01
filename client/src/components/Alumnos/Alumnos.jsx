@@ -11,6 +11,7 @@ import {
   TableHead,
   Container,
 } from "@mui/material";
+import LinearProgress from "@mui/material/LinearProgress";
 
 function RegisterStudent() {
   const { dispatch } = useContext(AppContext);
@@ -90,8 +91,8 @@ function RegisterStudent() {
     setProgress(1);
   };
 
-  if (progress == 0) {
-    return <div>"loading"</div>;
+  if (progress === 0) {
+    return <LinearProgress />;
   } else {
     return (
       <>
