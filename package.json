@@ -3,6 +3,7 @@
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.4",
     "popper.js": "^1.16.1",
-    "react-bootstrap": "^2.7.2"
+    "react-bootstrap": "^2.7.2",
+    "xlsx": "^0.18.5"
   }
 }
