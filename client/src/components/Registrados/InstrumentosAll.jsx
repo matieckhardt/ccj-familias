@@ -23,6 +23,10 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import Nav from "../Nav/Nav";
 import { Container } from "@mui/material";
+import DownloadIcon from "@mui/icons-material/Download";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import * as XLSX from "xlsx";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -200,9 +204,7 @@ function EnhancedTableToolbar(props) {
         </Tooltip>
       ) : (
         <Tooltip title="Filter list">
-          <IconButton>
-            <FilterListIcon />
-          </IconButton>
+          <IconButton></IconButton>
         </Tooltip>
       )}
     </Toolbar>
@@ -350,6 +352,39 @@ export default function EnhancedTable() {
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
+  const toExcel = () => {
+    // Fetch the JSON document
+    fetch(
+      "https://familias.colegiociudadjardin.edu.ar/api/v1/instrumentos/registrados"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // Convert the JSON data to XLS format
+        const workbook = XLSX.utils.book_new();
+        const sheet = XLSX.utils.json_to_sheet(data);
+        XLSX.utils.book_append_sheet(workbook, sheet, "Sheet1");
+        const file = XLSX.write(workbook, { type: "binary" });
+
+        // Create a downloadable link for the XLS file
+        const element = document.createElement("a");
+        element.href = URL.createObjectURL(
+          new Blob([s2ab(file)], { type: "application/octet-stream" })
+        );
+        element.download = "instrumentos.xlsx";
+        document.body.appendChild(element);
+        element.click();
+      });
+  };
+
+  function s2ab(s) {
+    const buf = new ArrayBuffer(s.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i < s.length; i++) {
+      view[i] = s.charCodeAt(i) & 0xff;
+    }
+    return buf;
+  }
+
   return (
     <>
       <Nav></Nav>
@@ -395,9 +430,13 @@ export default function EnhancedTable() {
               >
                 (incluyendo lista de espera)
               </Typography>
-              <Paper elevation={3}></Paper>
+
               <Box sx={{ width: "100%" }}>
                 <Paper sx={{ width: "100%", mb: 2 }}>
+                  <Button onClick={toExcel}>
+                    <span>Descargar XLS</span>
+                    <DownloadIcon />
+                  </Button>
                   <EnhancedTableToolbar numSelected={selected.length} />
                   <TableContainer>
                     <Table
@@ -413,6 +452,7 @@ export default function EnhancedTable() {
                         onRequestSort={handleRequestSort}
                         rowCount={rows.length}
                       />
+
                       <TableBody>
                         {visibleRows
                           ? visibleRows.map((row, index) => {
@@ -477,7 +517,6 @@ export default function EnhancedTable() {
                       </TableBody>
                     </Table>
                   </TableContainer>
-
                   <TablePagination
                     rowsPerPageOptions={[5, 10, 25]}
                     component="div"
