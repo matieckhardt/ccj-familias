@@ -14,18 +14,14 @@ import {
   Grid,
 } from "@mui/material";
 import Nav from "../Nav/Nav";
+import CuposCurso from "./curso.json";
 
 import { changeCurso, changeTaller } from "./actions";
 function RegisterStudent() {
   const [cupos, setCupo] = React.useState([]);
 
   const cuposData = async function (res, req) {
-    const response = await fetch(
-      "https://familias.colegiociudadjardin.edu.ar/api/v1/cupos/list"
-    );
-    const objeto = await response.json();
-    console.log(objeto);
-    setCupo(objeto);
+    setCupo(CuposCurso);
   };
 
   const curso = Array.from(new Set(cupos.map((item) => item.curso)));
@@ -36,6 +32,7 @@ function RegisterStudent() {
 
   const [cursoSel, setCursoSel] = React.useState([]);
   const [tallerSel, setTallerSel] = React.useState([]);
+  const [registrados, setRegistrados] = React.useState([]);
 
   React.useEffect(() => {
     getUserData();
@@ -60,6 +57,12 @@ function RegisterStudent() {
         tallerSel.payload
     );
     const objeto = await response.json();
+
+    const filteredData = CuposCurso.filter(
+      (obj) => obj.curso === cursoSel.payload && obj.name === tallerSel.payload
+    );
+    const cupoValue = filteredData.map((obj) => obj.cupo)[0];
+    setRegistrados(cupoValue);
     console.log("getClaseData", objeto);
     setClase(objeto);
   };
@@ -75,7 +78,6 @@ function RegisterStudent() {
     setTallerSel(changeTaller(event.target.value));
     console.log("tallerSel", tallerSel.payload);
   };
-
   return (
     <>
       <Nav></Nav>
@@ -129,7 +131,6 @@ function RegisterStudent() {
                   value={cursoSel.payload}
                   onChange={handleChangeCurso}
                 >
-                  <MenuItem value="all">Todos</MenuItem>
                   {curso.map((e) => (
                     <MenuItem value={e}> {e}</MenuItem>
                   ))}
@@ -192,7 +193,7 @@ function RegisterStudent() {
                             (a, b) =>
                               new Date(a.createdAt) - new Date(b.createdAt)
                           )
-                          .slice(0, 6)
+                          .slice(0, registrados)
                           .map((e) => (
                             <TableRow
                               key={e._id}
@@ -269,7 +270,7 @@ function RegisterStudent() {
                             (a, b) =>
                               new Date(a.createdAt) - new Date(b.createdAt)
                           )
-                          .slice(6)
+                          .slice(registrados)
                           .map((e) => (
                             <TableRow
                               key={e._id}
