@@ -1,0 +1,617 @@
+[{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3c8"
+  },
+  "name": "Violin",
+  "curso": "1AP",
+  "cupo": 12
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3c8"
+  },
+  "name": "Violin",
+  "curso": "1BP",
+  "cupo": 12
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3c8"
+  },
+  "name": "Violin",
+  "curso": "2AP",
+  "cupo": 12
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3c8"
+  },
+  "name": "Violin",
+  "curso": "2BP",
+  "cupo": 12
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3c8"
+  },
+  "name": "Violin",
+  "curso": "3AP",
+  "cupo": 12
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3c8"
+  },
+  "name": "Violin",
+  "curso": "3BP",
+  "cupo": 12
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3c8"
+  },
+  "name": "Guitarra",
+  "curso": "4AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3c9"
+  },
+  "name": "Guitarra",
+  "curso": "5AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3ca"
+  },
+  "name": "Guitarra",
+  "curso": "6AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3cb"
+  },
+  "name": "Guitarra",
+  "curso": "4BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3cc"
+  },
+  "name": "Guitarra",
+  "curso": "5BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3cd"
+  },
+  "name": "Guitarra",
+  "curso": "6BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3ce"
+  },
+  "name": "Guitarra",
+  "curso": "1AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3cf"
+  },
+  "name": "Guitarra",
+  "curso": "2AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d0"
+  },
+  "name": "Guitarra",
+  "curso": "3AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d1"
+  },
+  "name": "Guitarra",
+  "curso": "1BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d2"
+  },
+  "name": "Guitarra",
+  "curso": "2BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d3"
+  },
+  "name": "Guitarra",
+  "curso": "3BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d4"
+  },
+  "name": "Flauta Traversa",
+  "curso": "4AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d5"
+  },
+  "name": "Flauta Traversa",
+  "curso": "5AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d6"
+  },
+  "name": "Flauta Traversa",
+  "curso": "6AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d7"
+  },
+  "name": "Flauta Traversa",
+  "curso": "4BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d8"
+  },
+  "name": "Flauta Traversa",
+  "curso": "5BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3d9"
+  },
+  "name": "Flauta Traversa",
+  "curso": "6BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3da"
+  },
+  "name": "Flauta Traversa",
+  "curso": "1AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3db"
+  },
+  "name": "Flauta Traversa",
+  "curso": "2AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3dc"
+  },
+  "name": "Flauta Traversa",
+  "curso": "3AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3dd"
+  },
+  "name": "Flauta Traversa",
+  "curso": "1BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3de"
+  },
+  "name": "Flauta Traversa",
+  "curso": "2BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3df"
+  },
+  "name": "Flauta Traversa",
+  "curso": "3BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e0"
+  },
+  "name": "Piano",
+  "curso": "4AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e1"
+  },
+  "name": "Piano",
+  "curso": "5AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e2"
+  },
+  "name": "Piano",
+  "curso": "6AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e3"
+  },
+  "name": "Piano",
+  "curso": "4BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e4"
+  },
+  "name": "Piano",
+  "curso": "5BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e5"
+  },
+  "name": "Piano",
+  "curso": "6BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e6"
+  },
+  "name": "Piano",
+  "curso": "1AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e7"
+  },
+  "name": "Piano",
+  "curso": "2AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e8"
+  },
+  "name": "Piano",
+  "curso": "3AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3e9"
+  },
+  "name": "Piano",
+  "curso": "1BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3ea"
+  },
+  "name": "Piano",
+  "curso": "2BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3eb"
+  },
+  "name": "Piano",
+  "curso": "3BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3ec"
+  },
+  "name": "Bateria",
+  "curso": "4AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3ed"
+  },
+  "name": "Bateria",
+  "curso": "5AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3ee"
+  },
+  "name": "Bateria",
+  "curso": "6AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3ef"
+  },
+  "name": "Bateria",
+  "curso": "4BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f0"
+  },
+  "name": "Bateria",
+  "curso": "5BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f1"
+  },
+  "name": "Bateria",
+  "curso": "6BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f2"
+  },
+  "name": "Bateria",
+  "curso": "1AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f3"
+  },
+  "name": "Bateria",
+  "curso": "2AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f4"
+  },
+  "name": "Bateria",
+  "curso": "3AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f5"
+  },
+  "name": "Bateria",
+  "curso": "1BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f6"
+  },
+  "name": "Bateria",
+  "curso": "2BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f7"
+  },
+  "name": "Bateria",
+  "curso": "3BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f8"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "4AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3f9"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "5AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3fa"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "6AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3fb"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "4BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3fc"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "5BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3fd"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "6BP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3fe"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "1AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc3ff"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "2AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc400"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "3AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc401"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "1BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc402"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "2BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640a5b5dad43c6d1991dc403"
+  },
+  "name": "Saxo - Clarinete",
+  "curso": "3BS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b7435712b"
+  },
+  "name": "Ajedrez",
+  "curso": "2AP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b7435712c"
+  },
+  "name": "Ajedrez",
+  "curso": "3AP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b7435712d"
+  },
+  "name": "Ajedrez",
+  "curso": "4AP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b7435712e"
+  },
+  "name": "Ajedrez",
+  "curso": "5AP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b7435712f"
+  },
+  "name": "Ajedrez",
+  "curso": "6AP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b74357130"
+  },
+  "name": "Ajedrez",
+  "curso": "2BP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b74357131"
+  },
+  "name": "Ajedrez",
+  "curso": "3BP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b74357132"
+  },
+  "name": "Ajedrez",
+  "curso": "4BP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b74357133"
+  },
+  "name": "Ajedrez",
+  "curso": "5BP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "640b41a3c244ca7b74357134"
+  },
+  "name": "Ajedrez",
+  "curso": "6BP",
+  "cupo": "15"
+},{
+  "_id": {
+    "$oid": "64107e29ac0fb54fffce3c59"
+  },
+  "name": "Ajedrez",
+  "curso": "1AS",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "6419cc64ac0fb54fffce62a6"
+  },
+  "name": "Ajedrez",
+  "curso": "1BS",
+  "cupo": 15
+},{
+  "_id": {
+    "$oid": "6419cc68ac0fb54fffce62a9"
+  },
+  "name": "Ajedrez",
+  "curso": "2AS",
+  "cupo": 15
+},{
+  "_id": {
+    "$oid": "6419cc6dac0fb54fffce62ac"
+  },
+  "name": "Ajedrez",
+  "curso": "2BS",
+  "cupo": 15
+},{
+  "_id": {
+    "$oid": "6419cc72ac0fb54fffce62af"
+  },
+  "name": "Ajedrez",
+  "curso": "3AS",
+  "cupo": 15
+},{
+  "_id": {
+    "$oid": "6419cc79ac0fb54fffce62b2"
+  },
+  "name": "Ajedrez",
+  "curso": "4AS",
+  "cupo": 15
+},{
+  "_id": {
+    "$oid": "6419cc7cac0fb54fffce62b5"
+  },
+  "name": "Ajedrez",
+  "curso": "5AS",
+  "cupo": 15
+},{
+  "_id": {
+    "$oid": "6419cc7fac0fb54fffce62b8"
+  },
+  "name": "Ajedrez",
+  "curso": "6AS",
+  "cupo": 15
+},{
+  "_id": {
+    "$oid": "6434bbac20267751c84cea93"
+  },
+  "name": "Violin",
+  "curso": "4AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "6434bbb720267751c84cea96"
+  },
+  "name": "Violin",
+  "curso": "5AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "6434bbbc20267751c84cea99"
+  },
+  "name": "Violin",
+  "curso": "6AP",
+  "cupo": 6
+},{
+  "_id": {
+    "$oid": "643552ca20267751c84ceaaf"
+  },
+  "name": "Violin",
+  "curso": "2AP",
+  "cupo": 6
+}]
