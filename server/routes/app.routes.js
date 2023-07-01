@@ -5,6 +5,7 @@ const authCtrl = require("../controllers/auth.controller");
 const alumnosCtrl = require("../controllers/alumnos.controller");
 const alumnosCursosCtrl = require("../controllers/alumnosCursos.controller");
 const ajedrezCtrl = require("../controllers/ajedrez.controller");
+const familyCtrl = require("../controllers/matriculas.controller"); // Importar el controlador de la familia
 
 const cuposCtrl = require("../controllers/cupos.controller");
 //const mhgCtrl = require("../controllers/mhg.controller");
@@ -53,5 +54,10 @@ router.get("/alumnosCursos", alumnosCursosCtrl.list);
 router.get("/alumnosCursos/:DNI", alumnosCursosCtrl.listCursos);
 
 router.post("/auth/login", authCtrl.handleLogin);
+
+// Rutas para el modelo de familia
+router.get("/families", familyCtrl.listFamilies);
+router.get("/families/:dni", familyCtrl.getFamilyByDNI);
+router.post("/families/createOrUpdate", familyCtrl.createOrUpdateFamily);
 
 module.exports = router;

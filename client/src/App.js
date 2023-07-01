@@ -58,6 +58,7 @@ export default function App() {
           <Route path="/Ajedrez" element={<Wrapper></Wrapper>} />
           <Route path="/Cupos" element={<Wrapper></Wrapper>} />
           <Route path="/Matriculados" element={<Wrapper></Wrapper>} />
+          <Route path="/Matriculacion" element={<Wrapper></Wrapper>} />
           <Route path="/CodeGPT" element={<Wrapper></Wrapper>} />
           <Route
             path="/InstrumentosReg"
