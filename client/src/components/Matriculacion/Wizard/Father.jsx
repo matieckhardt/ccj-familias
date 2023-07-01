@@ -1,5 +1,6 @@
 import { Input, InputLabel, Button, Box } from "@mui/material";
 import { useState } from "react";
+import axios from "axios";
 
 function FatherDataStep({ data, onSaveAndContinue }) {
   const [formData, setFormData] = useState(data[0]);
@@ -12,8 +13,20 @@ function FatherDataStep({ data, onSaveAndContinue }) {
     }));
   };
 
-  const handleSaveAndContinue = () => {
-    onSaveAndContinue(formData);
+  const handleSaveFatherData = () => {
+    // Documento del padre encontrado, actualizar los datos
+    axios
+      .post(
+        `https://familias.colegiociudadjardin.edu.ar/families/createOrUpdate`,
+        formData
+      )
+      .then((response) => {
+        console.log(response.data);
+        // Realizar acciones adicionales después de guardar los datos del padre
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const renderInputs = () => {
@@ -70,7 +83,7 @@ function FatherDataStep({ data, onSaveAndContinue }) {
           variant="contained"
           color="primary"
           size="small"
-          onClick={handleSaveAndContinue}
+          onClick={handleSaveFatherData}
         >
           Guardar datos
         </Button>

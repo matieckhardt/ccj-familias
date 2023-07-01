@@ -33,7 +33,7 @@ familyCtrl.createOrUpdateFamily = async (req, res) => {
   const { dniP } = req.body;
 
   try {
-    let family = await FamilyModel.findOne({ dniP });
+    let family = await FamilyModel.findOne({ DNI_P });
 
     if (!family) {
       // Si no existe la familia, se crea un nuevo documento
