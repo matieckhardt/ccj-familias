@@ -8,6 +8,7 @@ import Cupos from "./components/Cupos/Cupos";
 import CodeGPT from "./components/CodeGPT/CodeGPT";
 
 import { useLocation } from "react-router-dom";
+import Matriculacion from "./components/Matriculacion/Matriculacion";
 
 function Wrapper() {
   const location = useLocation();
@@ -21,6 +22,8 @@ function Wrapper() {
           <Dashboard></Dashboard>
         ) : location.pathname === "/Mis%20Alumnos" ? (
           <Alumnos></Alumnos>
+        ) : location.pathname === "/Matriculacion" ? (
+          <Matriculacion></Matriculacion>
         ) : location.pathname === "/Ajedrez" ? (
           <Ajedrez></Ajedrez>
         ) : location.pathname === "/Cupos" ? (
