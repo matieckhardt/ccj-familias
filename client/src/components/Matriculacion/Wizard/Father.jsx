@@ -17,7 +17,7 @@ function FatherDataStep({ data, onSaveAndContinue }) {
     // Documento del padre encontrado, actualizar los datos
     axios
       .post(
-        `https://familias.colegiociudadjardin.edu.ar/families/createOrUpdate`,
+        `https://familias.colegiociudadjardin.edu.ar/api/v1/families/createOrUpdate`,
         formData
       )
       .then((response) => {

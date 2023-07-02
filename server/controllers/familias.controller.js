@@ -30,7 +30,7 @@ familyCtrl.getFamilyByDNI = async (req, res) => {
 };
 
 familyCtrl.createOrUpdateFamily = async (req, res) => {
-  const { dniP } = req.body;
+  const { DNI_P } = req.body;
 
   try {
     let family = await FamilyModel.findOne({ DNI_P });
