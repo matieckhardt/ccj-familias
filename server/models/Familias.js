@@ -125,9 +125,9 @@ const FamilySchema = new mongoose.Schema({
   FECHA_NP: { type: Date },
   FECHA_NM: { type: Date },
   FECHA_REC: { type: Date },
-  NRO_DOC_RESP: { type: mongoose.Schema.Types.BigInt, unsigned: true },
-  AFIP_NRODOC: { type: mongoose.Schema.Types.BigInt, unsigned: true },
-  NRODOC_WEB_SEC: { type: mongoose.Schema.Types.BigInt, unsigned: true },
+  NRO_DOC_RESP: { type: Number },
+  AFIP_NRODOC: { type: Number },
+  NRODOC_WEB_SEC: { type: Number },
   hijos: [ChildSchema], // Array de datos de los hijos
 });
 
