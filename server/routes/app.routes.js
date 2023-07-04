@@ -57,6 +57,7 @@ router.get("/alumnosCursos/:DNI", alumnosCursosCtrl.listCursos);
 
 router.get("/aranceles", matriculaCtrl.aranceles);
 router.get("/termconds", matriculaCtrl.termConds);
+router.get("/valoresMatri", matriculaCtrl.valoresMatri);
 
 router.post("/auth/login", authCtrl.handleLogin);
 

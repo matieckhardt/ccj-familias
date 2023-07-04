@@ -13,22 +13,11 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import axios from "axios";
+import ArancelesTable from "../Aranceles";
+import MatriculaValores from "../MatriculaValores";
 
-const SERVERURI = "http://127.0.0.1:80/api/v1/";
-
-const useStyles = makeStyles((theme) => ({
-  tableHeader: {
-    backgroundColor: "#1976D2", // Custom color for the table header
-    color: "#00000", // Custom text color for the table header
-    fontWeight: 800,
-  },
-  tableHeaderCell: {
-    color: "white", // Custom text color for the table header
-    fontWeight: 800,
-  },
-}));
+const SERVERURI = "https://familias.colegiociudadjardin.edu.ar/api/v1/";
 
 const styles = StyleSheet.create({
   page: {
@@ -54,11 +43,42 @@ const fecha = new Date().toLocaleDateString("es-AR", {
 });
 
 const { DNI, Alumno, Sala, Jornada, Curso } = {};
-const aranceles = axios.get(SERVERURI + "aranceles");
-const termConds = axios.get(SERVERURI + "termConds");
 
 function ContractCreate() {
-  const classes = useStyles();
+  const [termConds, setTermConds] = React.useState([]);
+
+  const [aranceles, setAranceles] = React.useState([]);
+  const [valores, setMatricula] = React.useState([]);
+
+  React.useEffect(() => {
+    const termConds = fetch(SERVERURI + "termConds")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setTermConds(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    const aranceles = fetch(SERVERURI + "aranceles")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setAranceles(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    const valores = fetch(SERVERURI + "valoresMatri")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setMatricula(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <Document>
@@ -131,96 +151,18 @@ function ContractCreate() {
                   {termConds.map((item) => (
                     <>
                       <ListItemText key={item.orden}>
-                        <strong> {item.orden}. </strong> {item.termConds}
+                        <strong> {item.orden}. </strong> {item.termsCon}
                       </ListItemText>
                       <br />
                     </>
                   ))}
                 </List>
               </Box>
-              <TableContainer component={Paper}>
-                <Box p={15}>
-                  <Table>
-                    <TableHead>
-                      <TableRow className={classes.tableHeader}>
-                        <TableCell
-                          className={classes.tableHeaderCell}
-                          rowSpan={2}
-                        >
-                          ARANCELES
-                        </TableCell>
-                        <TableCell
-                          className={classes.tableHeaderCell}
-                          colSpan={3}
-                        >
-                          NIVEL INICIAL
-                        </TableCell>
-                        <TableCell
-                          className={classes.tableHeaderCell}
-                          colSpan={2}
-                        >
-                          Nivel Primario
-                        </TableCell>
-                        <TableCell
-                          className={classes.tableHeaderCell}
-                          rowSpan={2}
-                        >
-                          Nivel Secundario
-                        </TableCell>
-                      </TableRow>
-                      <TableRow className={classes.tableHeader}>
-                        <TableCell className={classes.tableHeaderCell}>
-                          Jornada Simple
-                          <br />
-                          (Salas 1 a 4)
-                        </TableCell>
-                        <TableCell className={classes.tableHeaderCell}>
-                          Jornada Completa <br />
-                          (Salas 1 a 4)
-                        </TableCell>
-                        <TableCell className={classes.tableHeaderCell}>
-                          Sala de 5 años
-                        </TableCell>
-                        <TableCell className={classes.tableHeaderCell}>
-                          1º a 3º. año
-                        </TableCell>
-                        <TableCell className={classes.tableHeaderCell}>
-                          4º a 6º año
-                        </TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell>Valor Nominal</TableCell>
-                        <TableCell>$55.291</TableCell>
-                        <TableCell>$ 6183 cada una</TableCell>
-                        <TableCell>$26.500</TableCell>
-                        <TableCell>
-                          A partir del 2o. hermano (alumno o ingresante) se
-                          bonifica el 20%
-                        </TableCell>
-                        <TableCell>
-                          10 % de descuento a hijos de exalumnos
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Valor con pronto pago</TableCell>
-                        <TableCell>$47.000</TableCell>
-                        <TableCell>$ 10967 cada una</TableCell>
-                        <TableCell>$47.000</TableCell>
-                        <TableCell>
-                          A partir del 2o. hermano (alumno o ingresante) se
-                          bonifica el 20%
-                        </TableCell>
-                        <TableCell>
-                          10 % de descuento a hijos de exalumnos
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </Box>
-              </TableContainer>
             </Paper>
+            <Box p={10}>
+              <ArancelesTable aranceles={aranceles} />
+              <MatriculaValores prices={valores} />
+            </Box>
           </Box>
         </Page>
       </Box>
