@@ -9,7 +9,10 @@ import Wrapper from "./Wrapper";
 import Registrados from "./components/Registrados/Instrumentos";
 import AjedrezReg from "./components/Registrados/Ajedrez";
 import InstrumentosAll from "./components/Registrados/InstrumentosAll";
-import { redirect } from "react-router-dom";
+import React from "react";
+import dotenv from "dotenv"; // Import dotenv package
+
+dotenv.config();
 
 function AppPrincipal() {
   return (
