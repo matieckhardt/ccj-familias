@@ -6,6 +6,7 @@ import FatherDataStep from "./Wizard/Father";
 import MotherDataStep from "./Wizard/Mother";
 import SonDataStep from "./Wizard/Students";
 import PricesStep from "./Wizard/Prices";
+import ContractsView from "./Wizard/Contracts";
 
 const steps = [
   "Inicio ",
@@ -84,6 +85,8 @@ function Wizard() {
             {activeStep === 2 && <MotherDataStep data={[datosMhg]} />}
             {activeStep === 3 && <SonDataStep data={alumno} />}
             {activeStep === 4 && <PricesStep />}
+            {activeStep === 5 && <ContractsView />}
+
             {/* ... */}
             <div>
               <Button disabled={activeStep === 0} onClick={handleBack}>

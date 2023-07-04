@@ -10,10 +10,7 @@ import Registrados from "./components/Registrados/Instrumentos";
 import AjedrezReg from "./components/Registrados/Ajedrez";
 import InstrumentosAll from "./components/Registrados/InstrumentosAll";
 import React from "react";
-import dotenv from "dotenv"; // Import dotenv package
-
-dotenv.config();
-
+import ContractCreate from "./components/Matriculacion/Wizard/ContractCreate";
 function AppPrincipal() {
   return (
     <div className="App">
@@ -63,6 +60,10 @@ export default function App() {
           <Route path="/Matriculados" element={<Wrapper></Wrapper>} />
           <Route path="/Matriculacion" element={<Wrapper></Wrapper>} />
           <Route path="/CodeGPT" element={<Wrapper></Wrapper>} />
+          <Route
+            path="/ContractCreate"
+            element={<ContractCreate></ContractCreate>}
+          />
           <Route
             path="/InstrumentosReg"
             element={<Registrados></Registrados>}

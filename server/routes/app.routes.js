@@ -11,6 +11,8 @@ const cuposCtrl = require("../controllers/cupos.controller");
 //const mhgCtrl = require("../controllers/mhg.controller");
 const tallerCtrl = require("../controllers/taller.controller");
 const sqlCtrl = require("../controllers/sql.controller");
+const matriculaCtrl = require("../controllers/matricula.controller");
+
 const { authMiddleware } = require("../middlewares/authMiddleware");
 
 router.get("/auth/users", abmCtrl.listUsers);
@@ -52,6 +54,9 @@ router.get("/Legajos/:CODFAM", sqlCtrl.getLegajos);
 
 router.get("/alumnosCursos", alumnosCursosCtrl.list);
 router.get("/alumnosCursos/:DNI", alumnosCursosCtrl.listCursos);
+
+router.get("/aranceles", matriculaCtrl.aranceles);
+router.get("/termconds", matriculaCtrl.termConds);
 
 router.post("/auth/login", authCtrl.handleLogin);
 
