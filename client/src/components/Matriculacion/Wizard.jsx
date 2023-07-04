@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Stepper, Step, StepLabel, Button } from "@material-ui/core";
+import { Stepper, Step, StepLabel, Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import WelcomeStep from "./Wizard/Welcome";
 import FatherDataStep from "./Wizard/Father";
