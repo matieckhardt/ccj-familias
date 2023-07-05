@@ -64,7 +64,7 @@ router.post("/auth/login", authCtrl.handleLogin);
 // Rutas para el modelo de familia
 router.get("/families", familyCtrl.listFamilies);
 router.get("/families/:dni", familyCtrl.getFamilyByDNI);
-router.get("/families/:id", familyCtrl.getFamilyById);
+router.get("/legajos/:id", familyCtrl.getFamilyById);
 router.post("/families/createOrUpdate", familyCtrl.createOrUpdateFamily);
 
 module.exports = router;

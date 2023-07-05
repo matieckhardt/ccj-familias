@@ -132,6 +132,6 @@ const FamilySchema = new mongoose.Schema({
 });
 
 // Define el modelo basado en el esquema
-const FamilytModel = mongoose.model("Familias", FamilySchema);
+const FamilytModel = mongoose.model("familias", FamilySchema);
 
 module.exports = FamilytModel;

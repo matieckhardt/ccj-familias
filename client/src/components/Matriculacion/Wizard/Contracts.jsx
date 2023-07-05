@@ -10,7 +10,7 @@ const Contracts = ({ datosCargados }) => {
         <Button
           variant="contained"
           component={Link}
-          to={"/Contract/" + datosCargados._id}
+          to={"/Contract/" + datosCargados.DNI_P}
           target="_blank"
         >
           Abrir Contrato

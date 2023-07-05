@@ -43,16 +43,15 @@ const fecha = new Date().toLocaleDateString("es-AR", {
   day: "numeric",
 });
 
-const { DNI, Alumno, Sala, Jornada, Curso } = {};
-
-function TableFirmas() {
+function TableFirmas(familias) {
+  console.log(familias);
   return (
     <TableContainer>
       <Typography variant="caption">
         Me notifico, presto conformidad al presente contrato y me obligo a
         cumplir y hacer cumplir a mi/s hijo/s el Reglamento y sus anexos,
         asumiendo el compromiso de abonar mes a mes los aranceles antes
-        descriptos para el ciclo lectivo 2024 - Fecha: {Date}
+        descriptos para el ciclo lectivo 2024 - Fecha: {fecha}
         (Las familias nuevas deberán consignar las firmas de manera presencial
         al entregar la documentación en Administración)
       </Typography>
@@ -63,8 +62,8 @@ function TableFirmas() {
           <TableCell>Firma</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>datos padre</TableCell>
-          <TableCell>datos madre</TableCell>
+          <TableCell>asda</TableCell>
+          <TableCell>asdas</TableCell>
         </TableRow>
       </Table>
     </TableContainer>
@@ -73,13 +72,11 @@ function TableFirmas() {
 
 function ContractCreate() {
   const [user, setUser] = React.useState([]);
-  const [datosMhg, setDatos] = React.useState([]);
-  const [alumno, setAlumno] = React.useState([]);
   const [familias, setFamilias] = React.useState([]);
   const [termConds, setTermConds] = React.useState([]);
   const [aranceles, setAranceles] = React.useState([]);
   const [valores, setMatricula] = React.useState([]);
-  const { id } = useParams();
+  const { dni } = useParams();
 
   const getUserData = async function (res, req) {
     const token = JSON.stringify(localStorage.token);
@@ -90,24 +87,16 @@ function ContractCreate() {
     const objeto = await response.json();
     setUser(objeto);
 
-    const data = await fetch(SERVERURI + "Familias/" + objeto.userMail);
-    const datosMhg = await data.json();
-    setDatos(datosMhg[0] || "Vacio");
-
-    const alumnos = await fetch(SERVERURI + "Legajos/" + datosMhg[0].CODFAM);
-
-    const alumnoData = await alumnos.json();
-    setAlumno(alumnoData);
-
-    const dataSaved = await fetch(SERVERURI + "families/id/" + id);
+    const dataSaved = await fetch(SERVERURI + "families/" + dni);
     const legajos = await dataSaved.json();
-    console.log(dataSaved);
+    console.log(legajos);
     setFamilias(legajos);
   };
 
   React.useEffect(() => {
     getUserData();
-    const termConds = fetch(SERVERURI + "termConds")
+
+    fetch(SERVERURI + "termConds")
       .then((response) => response.json())
       .then((data) => {
         setTermConds(data);
@@ -115,7 +104,8 @@ function ContractCreate() {
       .catch((error) => {
         console.error(error);
       });
-    const aranceles = fetch(SERVERURI + "aranceles")
+
+    fetch(SERVERURI + "aranceles")
       .then((response) => response.json())
       .then((data) => {
         setAranceles(data);
@@ -123,7 +113,8 @@ function ContractCreate() {
       .catch((error) => {
         console.error(error);
       });
-    const valores = fetch(SERVERURI + "valoresMatri")
+
+    fetch(SERVERURI + "valoresMatri")
       .then((response) => response.json())
       .then((data) => {
         setMatricula(data);
@@ -189,10 +180,12 @@ function ContractCreate() {
                 </Typography>
                 <Typography variant="body1" paragraph>
                   En nuestro carácter de progenitores responsables del alumno{" "}
-                  DNI {DNI}, solicitamos a Uds. se sirvan reservar vacante/s
-                  para el ciclo lectivo 2024 para el curso/sala/año {Sala}{" "}
-                  {Jornada} {Curso} del solicitamos a Uds. se sirvan reservar
-                  vacante/s para el ciclo lectivo 2024 para el Nivel :.
+                  <strong> </strong>
+                  DNI <strong>,</strong> solicitamos a Uds. se sirvan reservar
+                  vacante/s para el ciclo lectivo 2024 para el curso/sala/año{" "}
+                  <strong> </strong>
+                  del solicitamos a Uds. se sirvan reservar vacante/s para el
+                  ciclo lectivo 2024 para el Nivel :.
                   <br />
                   En caso de ser admitido como alumno/a del mismo, tomo
                   conocimiento y acepto el siguiente reglamento de reserva de
