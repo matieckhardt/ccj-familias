@@ -1,6 +1,6 @@
 const matriculaCtrl = {};
 const Aranceles = require("../models/Aranceles");
-const TermConds = require("../models/TermConds");
+const TermConds = require("../models/Termconds");
 const MatriculaValores = require("../models/MatriculaValores");
 
 matriculaCtrl.aranceles = async (req, res) => {
