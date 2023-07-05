@@ -11,7 +11,7 @@ import {
   Box,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import ArancelesTable from "../Aranceles";
+import ArancelesTable from "../Contrato/Aranceles";
 
 const useStyles = makeStyles((theme) => ({
   tableHeader: {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Document, Page, StyleSheet } from "@react-pdf/renderer";
 import {
   Paper,
   Typography,
@@ -13,21 +13,20 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import axios from "axios";
-import ArancelesTable from "../Aranceles";
-import MatriculaValores from "../MatriculaValores";
-
+import ArancelesTable from "../Contrato/Aranceles";
+import MatriculaValores from "../Contrato/MatriculaValores";
+import DatosPadres from "../Contrato/DatosPadres";
 const SERVERURI = "https://familias.colegiociudadjardin.edu.ar/api/v1/";
 
 const styles = StyleSheet.create({
   page: {
     fontFamily: "Helvetica",
-    fontSize: 16,
+    fontSize: 12,
     padding: "1cm",
     borderWidth: 400,
   },
   title: {
-    fontSize: 16,
+    fontSize: 12,
     marginBottom: "0.5cm",
     fontWeight: "bold",
   },
@@ -44,9 +43,34 @@ const fecha = new Date().toLocaleDateString("es-AR", {
 
 const { DNI, Alumno, Sala, Jornada, Curso } = {};
 
+function TableFirmas() {
+  return (
+    <TableContainer>
+      <Typography variant="caption">
+        Me notifico, presto conformidad al presente contrato y me obligo a
+        cumplir y hacer cumplir a mi/s hijo/s el Reglamento y sus anexos,
+        asumiendo el compromiso de abonar mes a mes los aranceles antes
+        descriptos para el ciclo lectivo 2024 - Fecha: {Date}
+        (Las familias nuevas deberán consignar las firmas de manera presencial
+        al entregar la documentación en Administración)
+      </Typography>
+
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableRow>
+          <TableCell>Firma</TableCell>
+          <TableCell>Firma</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>datos padre</TableCell>
+          <TableCell>datos madre</TableCell>
+        </TableRow>
+      </Table>
+    </TableContainer>
+  );
+}
+
 function ContractCreate() {
   const [termConds, setTermConds] = React.useState([]);
-
   const [aranceles, setAranceles] = React.useState([]);
   const [valores, setMatricula] = React.useState([]);
 
@@ -86,22 +110,24 @@ function ContractCreate() {
         <Page size="A4" style={styles.page}>
           <Box m={1} width={1024}>
             <Paper elevation={0}>
-              <Box m={1} p={5}>
-                <Typography variant="body1" align="right">
+              <Box m={0} p={2} pb={3}>
+                <Typography variant="body2" align="right">
                   GARTENSTADT SCHULE – COLEGIO CIUDAD JARDIN
                 </Typography>
-                <Typography variant="body1" align="right">
+                <Typography variant="body2" align="right">
                   COOPERATIVA ESCOLAR Y CULTURAL EL PALOMAR LTDA. – CUIT
                   30-53487825-3
                 </Typography>
-                <Typography variant="body1" align="right">
+                <Typography variant="body2" align="right">
                   Matienzo 2799 – Ciudad jardín Lomas del Palomar (1684) –
                   Buenos Aires
                 </Typography>
               </Box>
               <Box
-                m={10}
-                mt={0}
+                mt={5}
+                ml={10}
+                mr={10}
+                mb={5}
                 border={1}
                 borderColor={"black"}
                 bgcolor={"lightgray"}
@@ -115,7 +141,7 @@ function ContractCreate() {
               <Typography variant="subtitle1" align="right" pr={5}>
                 Ciudad Jardín Lomas del Palomar, {fecha}
               </Typography>
-              <Box m={10} mb={3}>
+              <Box m={10} mt={5} mb={3}>
                 <Typography variant="subtitle1" align="left">
                   Señores
                 </Typography>
@@ -148,21 +174,53 @@ function ContractCreate() {
               </Box>
               <Box p={10} pt={1}>
                 <List>
-                  {termConds.map((item) => (
+                  {termConds.map((item, index) => (
                     <>
                       <ListItemText key={item.orden}>
                         <strong> {item.orden}. </strong> {item.termsCon}
                       </ListItemText>
+
+                      {index === 7 && (
+                        <Box p={4}>
+                          <TableFirmas></TableFirmas>
+                        </Box>
+                      )}
+
+                      {index === 14 && (
+                        <Box p={4}>
+                          <MatriculaValores prices={valores} />
+                        </Box>
+                      )}
+                      {index === 16 && (
+                        <Box p={4}>
+                          <TableFirmas></TableFirmas>
+                          <br />
+                        </Box>
+                      )}
                       <br />
+                      {index === 17 && (
+                        <Box p={4}>
+                          <ArancelesTable aranceles={aranceles} />
+                        </Box>
+                      )}
+                      {index === 28 && (
+                        <Box p={4}>
+                          <TableFirmas></TableFirmas>
+                          <br />
+                        </Box>
+                      )}
+
+                      {index === 31 && (
+                        <Box p={4}>
+                          <TableFirmas></TableFirmas>
+                        </Box>
+                      )}
                     </>
                   ))}
                 </List>
+                <DatosPadres></DatosPadres>
               </Box>
             </Paper>
-            <Box p={10}>
-              <ArancelesTable aranceles={aranceles} />
-              <MatriculaValores prices={valores} />
-            </Box>
           </Box>
         </Page>
       </Box>

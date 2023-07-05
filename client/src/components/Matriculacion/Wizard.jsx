@@ -16,6 +16,7 @@ const steps = [
   "Datos de Matricula",
   "Reglamentos y Contratos",
 ];
+const SERVERURI = "https://familias.colegiociudadjardin.edu.ar/api/v1/";
 
 function Wizard() {
   const [user, setUser] = React.useState([]);
@@ -25,24 +26,17 @@ function Wizard() {
   const getUserData = async function (res, req) {
     const token = JSON.stringify(localStorage.token);
     const response = await fetch(
-      "https://familias.colegiociudadjardin.edu.ar/api/v1/auth/user/profile?token=" +
-        token
+      SERVERURI + "/auth/user/profile?token=" + token
     );
 
     const objeto = await response.json();
     setUser(objeto);
 
-    const data = await fetch(
-      "https://familias.colegiociudadjardin.edu.ar/api/v1/Familias/" +
-        objeto.userMail
-    );
+    const data = await fetch(SERVERURI + "Familias/" + objeto.userMail);
     const datosMhg = await data.json();
     setDatos(datosMhg[0] || "Vacio");
 
-    const alumnos = await fetch(
-      "https://familias.colegiociudadjardin.edu.ar/api/v1/Legajos/" +
-        datosMhg[0].CODFAM
-    );
+    const alumnos = await fetch(SERVERURI + "Legajos/" + datosMhg[0].CODFAM);
 
     const alumnoData = await alumnos.json();
     setAlumno(alumnoData);
