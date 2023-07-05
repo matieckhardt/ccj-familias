@@ -16,6 +16,8 @@ import {
 import ArancelesTable from "../Contrato/Aranceles";
 import MatriculaValores from "../Contrato/MatriculaValores";
 import DatosPadres from "../Contrato/DatosPadres";
+import { useParams } from "react-router-dom";
+
 const SERVERURI = "https://familias.colegiociudadjardin.edu.ar/api/v1/";
 
 const styles = StyleSheet.create({
@@ -70,11 +72,39 @@ function TableFirmas() {
 }
 
 function ContractCreate() {
+  const [user, setUser] = React.useState([]);
+  const [datosMhg, setDatos] = React.useState([]);
+  const [alumno, setAlumno] = React.useState([]);
+  const [familias, setFamilias] = React.useState([]);
   const [termConds, setTermConds] = React.useState([]);
   const [aranceles, setAranceles] = React.useState([]);
   const [valores, setMatricula] = React.useState([]);
+  const { id } = useParams();
+
+  const getUserData = async function (res, req) {
+    const token = JSON.stringify(localStorage.token);
+    const response = await fetch(
+      SERVERURI + "/auth/user/profile?token=" + token
+    );
+
+    const objeto = await response.json();
+    setUser(objeto);
+
+    const data = await fetch(SERVERURI + "Familias/" + objeto.userMail);
+    const datosMhg = await data.json();
+    setDatos(datosMhg[0] || "Vacio");
+
+    const alumnos = await fetch(SERVERURI + "Legajos/" + datosMhg[0].CODFAM);
+
+    const alumnoData = await alumnos.json();
+    setAlumno(alumnoData);
+    const dataSaved = await fetch(SERVERURI + "families/" + id);
+    const familias = await dataSaved.json();
+    setFamilias(familias || "Vacio");
+  };
 
   React.useEffect(() => {
+    getUserData();
     const termConds = fetch(SERVERURI + "termConds")
       .then((response) => response.json())
       .then((data) => {

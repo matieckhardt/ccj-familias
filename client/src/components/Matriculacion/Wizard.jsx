@@ -22,6 +22,7 @@ function Wizard() {
   const [user, setUser] = React.useState([]);
   const [datosMhg, setDatos] = React.useState([]);
   const [alumno, setAlumno] = React.useState([]);
+  const [familias, setFamilias] = React.useState([]);
 
   const getUserData = async function (res, req) {
     const token = JSON.stringify(localStorage.token);
@@ -40,6 +41,9 @@ function Wizard() {
 
     const alumnoData = await alumnos.json();
     setAlumno(alumnoData);
+    const dataSaved = await fetch(SERVERURI + "families/" + datosMhg[0].DNI_P);
+    const familias = await dataSaved.json();
+    setFamilias(familias || "Vacio");
   };
 
   React.useEffect(() => {
@@ -81,7 +85,7 @@ function Wizard() {
               <SonDataStep alumno={alumno} datosMhg={datosMhg} />
             )}
             {activeStep === 4 && <PricesStep />}
-            {activeStep === 5 && <ContractsView />}
+            {activeStep === 5 && <ContractsView datosCargados={familias} />}
 
             {/* ... */}
             <div>

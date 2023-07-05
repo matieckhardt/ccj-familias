@@ -35,6 +35,21 @@ familyCtrl.getFamilyByDNI = async (req, res) => {
   }
 };
 
+familyCtrl.getFamilyById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const family = await FamilyModel.findOne({ _id: id });
+    if (family) {
+      res.json(family);
+    } else {
+      res.status(404).json({ message: "Familia no encontrada" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Error al obtener la familia", error });
+  }
+};
+
 familyCtrl.createOrUpdateFamily = async (req, res) => {
   const { DNI_P } = req.body;
 

@@ -60,10 +60,7 @@ export default function App() {
           <Route path="/Matriculados" element={<Wrapper></Wrapper>} />
           <Route path="/Matriculacion" element={<Wrapper></Wrapper>} />
           <Route path="/CodeGPT" element={<Wrapper></Wrapper>} />
-          <Route
-            path="/ContractCreate"
-            element={<ContractCreate></ContractCreate>}
-          />
+          <Route path="/Contract/:id" element={<ContractCreate />} />
           <Route
             path="/InstrumentosReg"
             element={<Registrados></Registrados>}
