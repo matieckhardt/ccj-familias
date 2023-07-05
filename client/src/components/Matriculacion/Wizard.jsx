@@ -77,7 +77,9 @@ function Wizard() {
             {activeStep === 0 && <WelcomeStep />}
             {activeStep === 1 && <FatherDataStep data={[datosMhg]} />}
             {activeStep === 2 && <MotherDataStep data={[datosMhg]} />}
-            {activeStep === 3 && <SonDataStep data={alumno} />}
+            {activeStep === 3 && (
+              <SonDataStep alumno={alumno} datosMhg={datosMhg} />
+            )}
             {activeStep === 4 && <PricesStep />}
             {activeStep === 5 && <ContractsView />}
 

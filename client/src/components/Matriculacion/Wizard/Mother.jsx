@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function MotherDataStep({ data, onSaveAndContinue }) {
-  const [formData, setFormData] = useState(data[0]);
+  const [formData, setFormData] = useState(data[0] || {}); // Set initial state to an empty object
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -13,60 +13,98 @@ function MotherDataStep({ data, onSaveAndContinue }) {
     }));
   };
 
-  const handleSaveMotherData = () => {
-    // Documento del padre encontrado, actualizar los datos
-    axios
-      .post(
-        `https://familias.colegiociudadjardin.edu.ar/api/v1/families/createOrUpdate`,
-        formData
-      )
-      .then((response) => {
-        console.log(response.data);
-        // Realizar acciones adicionales después de guardar los datos del padre
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const handleSaveMotherData = async (formValues) => {
+    try {
+      console.log("datos de la madre", formValues);
+      formValues.DNI_P = formValues.AFIP_NRODOC;
+      await axios.post(
+        "https://familias.colegiociudadjardin.edu.ar/api/v1/families/createOrUpdate",
+        formValues
+      );
+      console.log("Data saved successfully");
+      // Perform additional actions after saving mother's data
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const renderInputs = () => {
-    const inputs = [
-      { label: "Apellido y Nombre", name: "MADRE", variant: "text" },
-      { label: "Apellido Materno", name: "APE_MAT_M", variant: "text" },
-      { label: "Ocupacion", name: "OCUMAD", variant: "text" },
-      { label: "Fecha de Nacimiento", name: "FECHA_NM", variant: "date" },
-      { label: "Domicilio", name: "VIVE_DOMM", variant: "text" },
-      { label: "Telefono", name: "VIVE_TELM", variant: "tel" },
-      { label: "Empresa / Trabajo", name: "TRABAJOM", variant: "text" },
-      { label: "Domicilio Laboral", name: "TRAB_DOMM", variant: "text" },
-      { label: "Telefono Laboral", name: "TRAB_TELM", variant: "tel" },
-      { label: "Correo Electronico", name: "MAILMADREP", variant: "email" },
-    ];
+  const inputs = [
+    {
+      label: "Apellido y Nombre",
+      name: "MADRE",
+      variant: "text",
+    },
+    {
+      label: "Apellido Materno",
+      name: "APE_MAT_M",
+      variant: "text",
+    },
+    { label: "Ocupacion", name: "OCUMAD", variant: "text" },
+    {
+      label: "Fecha de Nacimiento",
+      name: "FECHA_NM",
+      variant: "date",
+    },
+    { label: "Domicilio", name: "VIVE_DOMM", variant: "text" },
+    { label: "Telefono", name: "VIVE_TELM", variant: "tel" },
+    {
+      label: "Empresa / Trabajo",
+      name: "TRABAJOM",
+      variant: "text",
+    },
+    {
+      label: "Domicilio Laboral",
+      name: "TRAB_DOMM",
+      variant: "text",
+    },
+    {
+      label: "Telefono Laboral",
+      name: "TRAB_TELM",
+      variant: "tel",
+    },
+    {
+      label: "Correo Electronico",
+      name: "MAILMADREP",
+      variant: "email",
+    },
+    { label: "DNI", name: "DNI_M", variant: "text" },
+    { label: "", name: "AFIP_NRODOC", variant: "text" },
+  ];
 
+  const renderInputs = () => {
     return inputs.map((input) => {
       const fieldName = input.name.endsWith("P")
         ? input.name.replace(/P$/, "M")
         : input.name;
 
-      let inputValue = formData[fieldName];
+      let inputValue = formData[fieldName] || ""; // Set initial value to an empty string
       if (input.variant === "date" && typeof inputValue === "string") {
         inputValue = inputValue.split("T")[0]; // Extract the date portion
       }
+
+      const inputStyle =
+        input.name === "AFIP_NRODOC" ? { display: "none" } : {};
 
       return (
         <div key={input.name}>
           <InputLabel sx={{ textAlign: "left" }}>{input.label}</InputLabel>
           <Input
             name={fieldName}
-            defaultValue={inputValue}
+            value={inputValue}
             onChange={handleChange}
             fullWidth
             type={input.variant}
+            style={inputStyle}
           />
         </div>
       );
     });
   };
+
+  const formValues = {};
+  for (const input of inputs) {
+    formValues[input.name] = formData[input.name] || "";
+  }
 
   return (
     <Box
@@ -79,12 +117,13 @@ function MotherDataStep({ data, onSaveAndContinue }) {
       gap={2}
     >
       {renderInputs()}
+
       <Box gridColumn="span 2" textAlign="center" marginTop={2}>
         <Button
           variant="contained"
           color="primary"
           size="small"
-          onClick={handleSaveMotherData}
+          onClick={() => handleSaveMotherData(formValues)}
           required
         >
           Guardar datos

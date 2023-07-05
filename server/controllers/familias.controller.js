@@ -1,6 +1,6 @@
 const familyCtrl = {};
 const FamilyModelSQL = require("../models/Sql/Familias");
-const FamilyModel = require("../models/Sql/Familias");
+const FamilyModel = require("../models/Familias");
 familyCtrl.index = (req, res) => {
   res.render("users", { active: { users: true } });
 };
@@ -43,6 +43,7 @@ familyCtrl.createOrUpdateFamily = async (req, res) => {
 
     if (!family) {
       // Si no existe la familia, se crea un nuevo registro
+      console.log("no existe la familia, creando registro");
       family = await FamilyModel.create(req.body);
       return res
         .status(201)
@@ -51,6 +52,7 @@ familyCtrl.createOrUpdateFamily = async (req, res) => {
 
     // Actualizar las propiedades existentes en el registro
     await FamilyModel.updateOne({ DNI_P }, req.body);
+    console.log("existe la familia, actualizando registro");
 
     res.json({ message: "Familia actualizada exitosamente" });
   } catch (error) {

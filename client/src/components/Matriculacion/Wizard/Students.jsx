@@ -13,9 +13,11 @@ import {
 import { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import DeleteIcon from "@mui/icons-material/Delete";
+import axios from "axios";
 
-function SonDataStep({ data, onSaveAndContinue }) {
-  const [formData, setFormData] = useState([...data]);
+function SonDataStep({ alumno, datosMhg }) {
+  const [formData, setFormData] = useState([...alumno]);
   const [expandedIndex, setExpandedIndex] = useState(0);
 
   const handleChange = (event, index) => {
@@ -30,10 +32,6 @@ function SonDataStep({ data, onSaveAndContinue }) {
     });
   };
 
-  const handleSaveAndContinue = () => {
-    onSaveAndContinue(formData);
-  };
-
   const handleToggle = (index) => {
     setExpandedIndex((prevIndex) => (prevIndex === index ? -1 : index));
   };
@@ -44,12 +42,38 @@ function SonDataStep({ data, onSaveAndContinue }) {
       {
         NOMBRE: "",
         APELLIDO: "",
-        MATRICULA: "",
         CURSO: "",
         DNI: "",
-        FECHA_EGR1: "",
+        FECHA_NAC: "",
       },
     ]);
+  };
+
+  const handleRemoveStudent = (index) => {
+    setFormData((prevData) => {
+      const updatedData = [...prevData];
+      updatedData.splice(index, 1);
+      return updatedData;
+    });
+  };
+
+  const handleSaveStudentsData = async () => {
+    const hijos = {
+      DNI_P: datosMhg.DNI_P,
+      hijos: [...formData],
+    };
+
+    try {
+      console.log("datos del padre");
+      await axios.post(
+        "https://familias.colegiociudadjardin.edu.ar/api/v1/families/createOrUpdate",
+        hijos
+      );
+      console.log("Data saved successfully");
+      // Perform additional actions after saving father's data
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const renderInputs = () => {
@@ -57,10 +81,9 @@ function SonDataStep({ data, onSaveAndContinue }) {
       const inputs = [
         { label: "Nombre del Alumno", name: "NOMBRE", variant: "text" },
         { label: "Apellido", name: "APELLIDO", variant: "text" },
-        { label: "Matricula", name: "MATRICULA", variant: "text" },
-        { label: "Curso", name: "CURSO", variant: "text" },
+        { label: "Curso actual", name: "CURSO", variant: "text" },
         { label: "DNI", name: "DNI", variant: "number" },
-        { label: "Fecha de Egreso", name: "FECHA_EGR1", variant: "date" },
+        { label: "Fecha de nacimiento", name: "FECHA_NAC", variant: "date" },
       ];
 
       const isExpanded = expandedIndex === index;
@@ -125,6 +148,15 @@ function SonDataStep({ data, onSaveAndContinue }) {
                     </ListItem>
                   );
                 })}
+                <Box textAlign="right" mt={1}>
+                  <IconButton
+                    aria-label="Remove"
+                    onClick={() => handleRemoveStudent(index)}
+                  >
+                    <Typography>Eliminar</Typography>
+                    <DeleteIcon />
+                  </IconButton>
+                </Box>
               </List>
             </Collapse>
           </Box>
@@ -151,7 +183,7 @@ function SonDataStep({ data, onSaveAndContinue }) {
           variant="contained"
           color="primary"
           size="small"
-          onClick={handleSaveAndContinue}
+          onClick={handleSaveStudentsData}
         >
           Guardar datos
         </Button>
