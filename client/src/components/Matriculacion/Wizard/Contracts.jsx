@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const Contracts = () => {
+const Contracts = ({ datosCargados }) => {
   return (
     <Box p={10}>
       <div>
@@ -10,7 +10,7 @@ const Contracts = () => {
         <Button
           variant="contained"
           component={Link}
-          to="/ContractCreate"
+          to={"/Contract/" + datosCargados._id}
           target="_blank"
         >
           Abrir Contrato
