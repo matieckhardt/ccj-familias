@@ -35,7 +35,7 @@ familyCtrl.getFamilyByDNI = async (req, res) => {
   }
 };
 
-familyCtrl.getFamily = async (req, res) => {
+familyCtrl.getFamilyById = async (req, res) => {
   const { id } = req.params;
 
   try {
