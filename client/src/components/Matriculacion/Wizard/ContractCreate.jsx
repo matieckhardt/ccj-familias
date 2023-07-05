@@ -98,9 +98,11 @@ function ContractCreate() {
 
     const alumnoData = await alumnos.json();
     setAlumno(alumnoData);
-    const dataSaved = await fetch(SERVERURI + "families/" + id);
-    const familias = await dataSaved.json();
-    setFamilias(familias || "Vacio");
+
+    const dataSaved = await fetch(SERVERURI + "families/id/" + id);
+    const legajos = await dataSaved.json();
+    console.log(dataSaved);
+    setFamilias(legajos);
   };
 
   React.useEffect(() => {
@@ -108,7 +110,6 @@ function ContractCreate() {
     const termConds = fetch(SERVERURI + "termConds")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTermConds(data);
       })
       .catch((error) => {
@@ -117,7 +118,6 @@ function ContractCreate() {
     const aranceles = fetch(SERVERURI + "aranceles")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setAranceles(data);
       })
       .catch((error) => {
@@ -126,7 +126,6 @@ function ContractCreate() {
     const valores = fetch(SERVERURI + "valoresMatri")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setMatricula(data);
       })
       .catch((error) => {
@@ -190,10 +189,10 @@ function ContractCreate() {
                 </Typography>
                 <Typography variant="body1" paragraph>
                   En nuestro carácter de progenitores responsables del alumno{" "}
-                  {Alumno} DNI {DNI}, solicitamos a Uds. se sirvan reservar
-                  vacante/s para el ciclo lectivo 2024 para el curso/sala/año{" "}
-                  {Sala} {Jornada} {Curso} del solicitamos a Uds. se sirvan
-                  reservar vacante/s para el ciclo lectivo 2024 para el Nivel :.
+                  DNI {DNI}, solicitamos a Uds. se sirvan reservar vacante/s
+                  para el ciclo lectivo 2024 para el curso/sala/año {Sala}{" "}
+                  {Jornada} {Curso} del solicitamos a Uds. se sirvan reservar
+                  vacante/s para el ciclo lectivo 2024 para el Nivel :.
                   <br />
                   En caso de ser admitido como alumno/a del mismo, tomo
                   conocimiento y acepto el siguiente reglamento de reserva de

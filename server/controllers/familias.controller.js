@@ -35,11 +35,13 @@ familyCtrl.getFamilyByDNI = async (req, res) => {
   }
 };
 
-familyCtrl.getFamilyById = async (req, res) => {
+familyCtrl.getFamily = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const family = await FamilyModel.findOne({ _id: id });
+    const family = await FamilyModel.findOne({
+      _id: mongoose.Types.ObjectId(id),
+    });
     if (family) {
       res.json(family);
     } else {
