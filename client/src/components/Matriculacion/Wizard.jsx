@@ -84,8 +84,10 @@ function Wizard() {
             {activeStep === 3 && (
               <SonDataStep alumno={alumno} datosMhg={datosMhg} />
             )}
-            {activeStep === 4 && <PricesStep />}
-            {activeStep === 5 && <ContractsView datosCargados={familias} />}
+            {activeStep === 4 && <PricesStep data={[datosMhg]} />}
+            {activeStep === 5 && (
+              <ContractsView data={[datosMhg]} datosCargados={familias} />
+            )}
 
             {/* ... */}
             <div>

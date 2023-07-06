@@ -1,18 +1,54 @@
+import React from "react";
 import {
-  Paper,
-  Typography,
-  List,
-  ListItemText,
   Box,
-  Table,
-  TableBody,
-  TableCell,
   TableContainer,
+  Table,
   TableHead,
+  TableBody,
   TableRow,
+  TableCell,
 } from "@mui/material";
 
-function DatosPadres() {
+function DatosPadres({ data }) {
+  if (!data) {
+    // Data is not available, render a loading state or an error message
+    return <div>Loading...</div>;
+  }
+  const formaPago = {
+    titulo: "FORMA DE PAGO ELEGIDA PARA LA MATRICULA 2024",
+    datos: data.LEYENF1,
+  };
+
+  const datosFiliatorios = {
+    titulo: "Datos Filiatorios",
+    domicilio: data.VIVE_DOMM,
+    telefono: data.VIVE_TELM,
+    hermanos: data.hijos
+      ? data.hijos.map((e) => " | " + e.APELLIDO + ", " + e.NOMBRE + " | ")
+      : [],
+  };
+
+  const progenitoresResponsables = {
+    progenitor1: {
+      apellidoNombres: data.PADRE,
+      parentesco: "data1",
+      cuitCuilDni: data.DNI_P,
+      domicilio: data.VIVE_DOMP,
+      telefonoCelular: data.VIVE_TELP,
+      email: data.MAILPADREP,
+      emisionFacturas: "SI",
+    },
+    progenitor2: {
+      apellidoNombres: data.MADRE,
+      parentesco: "data1",
+      cuitCuilDni: data.DNI_M,
+      domicilio: data.VIVE_DOMM,
+      telefonoCelular: data.VIVE_TELM,
+      email: data.MAILMADREP,
+      emisionFacturas: "NO",
+    },
+  };
+
   return (
     <Box>
       <TableContainer>
@@ -22,152 +58,187 @@ function DatosPadres() {
           mr={10}
           mb={5}
           border={1}
-          borderColor={"black"}
-          bgcolor={"lightgray"}
+          bgcolor="lightgray"
           pt={1}
         >
           <TableHead>
-            <TableCell colSpan={4}>
-              <strong>
-                <center>FORMA DE PAGO ELEGIDA PARA LA MATRICULA 2024</center>
-              </strong>
-            </TableCell>
+            <TableRow>
+              <TableCell colSpan={4}>
+                <strong>
+                  <center>{formaPago.titulo}</center>
+                </strong>
+              </TableCell>
+            </TableRow>
           </TableHead>
-          <TableRow>
-            <TableCell colSpan={4}>
-              <strong>
-                <center>los datos</center>
-              </strong>
-            </TableCell>
-          </TableRow>
+          <TableBody>
+            <TableRow>
+              <TableCell colSpan={4}>
+                <strong>
+                  <center>{formaPago.datos}</center>
+                </strong>
+              </TableCell>
+            </TableRow>
+          </TableBody>
         </Table>
-        <br></br>
+      </TableContainer>
+      <br />
+      <TableContainer>
         <Table
           mt={5}
           ml={10}
           mr={10}
           mb={5}
           border={1}
-          borderColor={"black"}
-          bgcolor={"lightgray"}
+          bgcolor="lightgray"
           pt={1}
         >
-          <TableRow>
-            <TableCell colSpan={4}>
-              <strong>Datos Filiatorios</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>
-              <strong>
-                <center>DOMICILIO</center>
-              </strong>
-            </TableCell>
-            <TableCell>
-              <center>el dom</center>
-            </TableCell>
-            <TableCell>
-              <strong>
-                <center>TELEFONO</center>
-              </strong>
-            </TableCell>
-            <TableCell>
-              <center>1234135</center>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={4}>
-              <strong>
-                <center>
-                  HERMANOS DEL ALUMNO QUE CONCURREN o CONCURRIERON AL
-                  ESTABLECIMIENTO
-                </center>
-              </strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={4}>
-              <center>datos hermanos</center>
-            </TableCell>
-          </TableRow>
+          <TableHead>
+            <TableRow>
+              <TableCell colSpan={4}>
+                <strong>{datosFiliatorios.titulo}</strong>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                <strong>
+                  <center>DOMICILIO</center>
+                </strong>
+              </TableCell>
+              <TableCell>
+                <center>{datosFiliatorios.domicilio}</center>
+              </TableCell>
+              <TableCell>
+                <strong>
+                  <center>TELEFONO</center>
+                </strong>
+              </TableCell>
+              <TableCell>
+                <center>{datosFiliatorios.telefono}</center>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell colSpan={4}>
+                <center>{datosFiliatorios.hermanos}</center>
+              </TableCell>
+            </TableRow>
+          </TableBody>
         </Table>
-        <br></br>
+      </TableContainer>
+      <br />
+      <TableContainer>
         <Table>
-          <TableRow>
-            <TableCell colSpan={1}>
-              <center></center>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>PROGENITOR RESPONSABLE 1</strong>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>PROGENITOR RESPONSABLE 1</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={1}>Apellido y Nombres</TableCell>
-            <TableCell colSpan={1}>
-              <strong>data1</strong>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>data 2</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={1}>PARENTESCO</TableCell>
-            <TableCell colSpan={1}>
-              <strong>data1</strong>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>data 2</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={1}>CUIT /CUIL / DNI</TableCell>
-            <TableCell colSpan={1}>
-              <strong>data1</strong>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>data 2</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={1}>DOMICILIO</TableCell>
-            <TableCell colSpan={1}>
-              <strong>data1</strong>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>data 2</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={1}>TELEFONO CELULAR</TableCell>
-            <TableCell colSpan={1}>
-              <strong>data1</strong>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>data 2</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={1}>EMAIL</TableCell>
-            <TableCell colSpan={1}>
-              <strong>data1</strong>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>data 2</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={1}>EMISION DE FACTURAS</TableCell>
-            <TableCell colSpan={1}>
-              <strong>data1</strong>
-            </TableCell>
-            <TableCell colSpan={1}>
-              <strong>data 2</strong>
-            </TableCell>
-          </TableRow>
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell>
+                <strong>PROGENITOR RESPONSABLE 1</strong>
+              </TableCell>
+              <TableCell>
+                <strong>PROGENITOR RESPONSABLE 2</strong>
+              </TableCell>
+            </TableRow>
+          </TableHead>
         </Table>
+        <Box>
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell>
+                    <strong>PROGENITOR RESPONSABLE 1</strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>PROGENITOR RESPONSABLE 2</strong>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Apellido y Nombres</TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor1.apellidoNombres}
+                    </strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor2.apellidoNombres}
+                    </strong>
+                  </TableCell>
+                </TableRow>
+                <TableRow></TableRow>
+                <TableRow>
+                  <TableCell>CUIT /CUIL / DNI</TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor1.cuitCuilDni}
+                    </strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor2.cuitCuilDni}
+                    </strong>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Domicilio</TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor1.domicilio}
+                    </strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor2.domicilio}
+                    </strong>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Telefono Celular</TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor1.telefonoCelular}
+                    </strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor2.telefonoCelular}
+                    </strong>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Email</TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor1.email}
+                    </strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor2.email}
+                    </strong>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Emisión de Facturas</TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor1.emisionFacturas}
+                    </strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>
+                      {progenitoresResponsables.progenitor2.emisionFacturas}
+                    </strong>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
       </TableContainer>
     </Box>
   );

@@ -13,17 +13,22 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme) => ({
   tableHeader: {
     backgroundColor: "#1976D2", // Custom color for the table header
-    color: "white", // Custom text color for the table header
+    color: "black", // Custom text color for the table header
     fontWeight: 800,
   },
   tableHeaderCell: {
-    color: "white", // Custom text color for the table header
+    color: "black", // Custom text color for the table header
     fontWeight: 800,
   },
 }));
 
 const ArancelesTable = ({ aranceles }) => {
   const classes = useStyles();
+
+  if (!aranceles) {
+    // Data is not available, render a loading state or an error message
+    return <div>Loading...</div>;
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -34,7 +39,7 @@ const ArancelesTable = ({ aranceles }) => {
               ARANCELES
             </TableCell>
             <TableCell className={classes.tableHeaderCell} colSpan={3}>
-              NIVEL INICIAL
+              NIVEL Inicial
             </TableCell>
             <TableCell className={classes.tableHeaderCell} colSpan={2}>
               Nivel Primario
