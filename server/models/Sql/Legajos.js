@@ -35,9 +35,6 @@ const LegajosSchema = {
   TURNO: {
     type: DataTypes.STRING,
   },
-  CODFAM: {
-    type: DataTypes.NUMBER,
-  },
   PLANCUO: {
     type: DataTypes.STRING,
   },
