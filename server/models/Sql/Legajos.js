@@ -36,7 +36,7 @@ const LegajosSchema = {
     type: DataTypes.STRING,
   },
   CODFAM: {
-    type: DataTypes.Number,
+    type: DataTypes.NUMBER,
   },
   PLANCUO: {
     type: DataTypes.STRING,
