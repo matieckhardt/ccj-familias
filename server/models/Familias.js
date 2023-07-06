@@ -8,6 +8,11 @@ const ChildSchema = new mongoose.Schema({
   CURSO: { type: String },
   DNI: { type: Number },
   FECHA_NAC: { type: Date },
+  LEYENL2: { type: String },
+  LEYENL3: { type: String },
+  TURNO: { type: String },
+  CODFAM: { type: Number },
+  PLANCUO: { type: Number },
 });
 
 // Define el esquema para los datos del padre y la madre

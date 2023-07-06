@@ -9,19 +9,78 @@ import {
   Collapse,
   IconButton,
   Typography,
+  FormControl,
+  Select,
+  MenuItem,
+  ListSubheader,
 } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 
+const options = {
+  Inicial: [
+    { curso: "Sala de 1 año", value: "1AI" },
+    { curso: "Sala de 2 años", value: "2AI" },
+    { curso: "Sala de 3 años", value: "3AI" },
+    { curso: "Sala de 4 años", value: "4AI" },
+    { curso: "Sala de 5 años", value: "5AI" },
+  ],
+  Primario: [
+    { curso: "1º Año", value: "1AP" },
+    { curso: "2º Año", value: "2AP" },
+    { curso: "3º Año", value: "3AP" },
+    { curso: "4º Año", value: "4AP" },
+    { curso: "5º Año", value: "5AP" },
+    { curso: "6º Año", value: "6AP" },
+  ],
+  Secundario: [
+    { curso: "1º Año", value: "1AS" },
+    { curso: "2º Año", value: "2AS" },
+    { curso: "3º Año", value: "3AS" },
+    { curso: "4º Año", value: "4AS" },
+    { curso: "5º Año", value: "5AS" },
+    { curso: "6º Año", value: "6AS" },
+  ],
+};
+
+const SelectComponent = () => {
+  const [selectedOption, setSelectedOption] = React.useState("");
+  console.log("cursoSelected", selectedOption);
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  return (
+    <FormControl variant="standard" fullWidth>
+      <InputLabel>Curso</InputLabel>
+      <Select value={selectedOption} onChange={handleOptionChange}>
+        {Object.entries(options).map(([section, values]) => [
+          <MenuItem value={section} disabled key={section}>
+            {section}
+          </MenuItem>,
+          ...values.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.curso}
+            </MenuItem>
+          )),
+        ])}
+      </Select>
+    </FormControl>
+  );
+};
+
 function SonDataStep({ alumno, datosMhg }) {
   const [formData, setFormData] = useState([...alumno]);
   const [expandedIndex, setExpandedIndex] = useState(0);
+  const [formComplete, setFormComplete] = useState(false);
 
   const handleChange = (event, index) => {
     const { name, value } = event.target;
+    let updatedData; // Declare the updatedData variable
     setFormData((prevData) => {
       const updatedData = [...prevData];
       updatedData[index] = {
@@ -30,6 +89,17 @@ function SonDataStep({ alumno, datosMhg }) {
       };
       return updatedData;
     });
+
+    // Check form completion
+    const isFormComplete = updatedData.every(
+      (student) =>
+        student.NOMBRE &&
+        student.APELLIDO &&
+        student.CURSO &&
+        student.DNI &&
+        student.FECHA_NAC
+    );
+    setFormComplete(isFormComplete);
   };
 
   const handleToggle = (index) => {
@@ -58,6 +128,11 @@ function SonDataStep({ alumno, datosMhg }) {
   };
 
   const handleSaveStudentsData = async () => {
+    if (alumno.LEYENL3) {
+      // Block saving data
+      console.log("Cannot save data. alumno.LEYEND3 has a value.");
+      return;
+    }
     const hijos = {
       DNI_P: datosMhg.DNI_P,
       hijos: [...formData],
@@ -81,13 +156,12 @@ function SonDataStep({ alumno, datosMhg }) {
       const inputs = [
         { label: "Nombre del Alumno", name: "NOMBRE", variant: "text" },
         { label: "Apellido", name: "APELLIDO", variant: "text" },
-        { label: "Curso actual", name: "CURSO", variant: "text" },
         { label: "DNI", name: "DNI", variant: "number" },
         { label: "Fecha de nacimiento", name: "FECHA_NAC", variant: "date" },
       ];
 
       const isExpanded = expandedIndex === index;
-
+      console.log("alumno", alumno);
       return (
         <ListItem key={index} disablePadding>
           <Box
@@ -114,6 +188,7 @@ function SonDataStep({ alumno, datosMhg }) {
                 Alumno {index + 1}
               </Typography>
             </Button>
+
             <Collapse in={isExpanded} timeout="auto" unmountOnExit>
               <List disablePadding>
                 {inputs.map((input) => {
@@ -137,6 +212,10 @@ function SonDataStep({ alumno, datosMhg }) {
                       >
                         {input.label}
                       </Typography>
+
+                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                        {alumno.LEYENL2}
+                      </Typography>
                       <Input
                         size="small"
                         name={input.name}
@@ -144,10 +223,12 @@ function SonDataStep({ alumno, datosMhg }) {
                         onChange={(event) => handleChange(event, index)}
                         fullWidth
                         type={input.variant}
+                        required
                       />
                     </ListItem>
                   );
                 })}
+                <SelectComponent></SelectComponent>
                 <Box textAlign="right" mt={1}>
                   <IconButton
                     aria-label="Remove"
@@ -184,6 +265,7 @@ function SonDataStep({ alumno, datosMhg }) {
           color="primary"
           size="small"
           onClick={handleSaveStudentsData}
+          disabled={!formComplete}
         >
           Guardar datos
         </Button>

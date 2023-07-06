@@ -41,6 +41,7 @@ function Wizard() {
 
     const alumnoData = await alumnos.json();
     setAlumno(alumnoData);
+
     const dataSaved = await fetch(SERVERURI + "families/" + datosMhg[0].DNI_P);
     const familias = await dataSaved.json();
     setFamilias(familias || "Vacio");
