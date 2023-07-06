@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 
 // Define el esquema para los datos de los hijos
 const ChildSchema = new mongoose.Schema({
-  NOMBRE: { type: String },
-  APELLIDO: { type: String },
-  MATRIUCULA: { type: String },
-  CURSO: { type: String },
-  DNI: { type: Number },
-  FECHA_NAC: { type: Date },
-  LEYENL2: { type: String },
-  LEYENL3: { type: String },
-  TURNO: { type: String },
-  CODFAM: { type: Number },
-  PLANCUO: { type: Number },
+  NOMBRE: String,
+  APELLIDO: String,
+  MATRIUCULA: String,
+  CURSO: String,
+  DNI: Number,
+  FECHA_NAC: Date,
+  LEYENL2: String,
+  LEYENL3: String,
+  TURNO: String,
+  CODFAM: Number,
+  PLANCUO: String,
 });
 
 // Define el esquema para los datos del padre y la madre

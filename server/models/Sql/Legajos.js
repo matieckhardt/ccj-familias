@@ -26,6 +26,21 @@ const LegajosSchema = {
   FECHA_EGR1: {
     type: DataTypes.DATE,
   },
+  LEYENL2: {
+    type: DataTypes.STRING,
+  },
+  LEYENL3: {
+    type: DataTypes.STRING,
+  },
+  TURNO: {
+    type: DataTypes.STRING,
+  },
+  CODFAM: {
+    type: DataTypes.Number,
+  },
+  PLANCUO: {
+    type: DataTypes.STRING,
+  },
 };
 
 console.log("Using model Legajos with mysql");
