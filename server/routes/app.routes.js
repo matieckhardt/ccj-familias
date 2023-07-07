@@ -66,5 +66,6 @@ router.get("/families", familyCtrl.listFamilies);
 router.get("/families/:dni", familyCtrl.getFamilyByDNI);
 router.get("/legajos/:id", familyCtrl.getFamilyById);
 router.post("/families/createOrUpdate", familyCtrl.createOrUpdateFamily);
+router.post("/families/dniUpload", familyCtrl.uploadImage);
 
 module.exports = router;

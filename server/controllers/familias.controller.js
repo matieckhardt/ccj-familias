@@ -4,6 +4,25 @@ const FamilyModel = require("../models/Familias");
 familyCtrl.index = (req, res) => {
   res.render("users", { active: { users: true } });
 };
+const multer = require("multer");
+const path = require("path");
+
+// Set up multer storage
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/dnis"); // Specify the destination folder
+  },
+  filename: (req, file, cb) => {
+    const fileName = `${req.body.DNI_P}${path.extname(file.originalname)}`;
+    cb(null, fileName); // Set the file name to DNI_P + extension
+  },
+});
+
+// Set up multer upload
+const upload = multer({ storage });
+
+// Handle image upload
+familyCtrl.uploadImage = upload.single("image");
 
 // Mongoose querys
 

@@ -14,7 +14,7 @@ import {
   MenuItem,
   ListSubheader,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -46,41 +46,50 @@ const options = {
   ],
 };
 
-const SelectComponent = () => {
-  const [selectedOption, setSelectedOption] = React.useState("");
-  console.log("cursoSelected", selectedOption);
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
-  return (
-    <FormControl variant="standard" fullWidth>
-      <InputLabel>Curso</InputLabel>
-      <Select value={selectedOption} onChange={handleOptionChange}>
-        {Object.entries(options).map(([section, values]) => [
-          <MenuItem value={section} disabled key={section}>
-            {section}
-          </MenuItem>,
-          ...values.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.curso}
-            </MenuItem>
-          )),
-        ])}
-      </Select>
-    </FormControl>
-  );
-};
-
 function SonDataStep({ alumno, datosMhg }) {
   const [formData, setFormData] = useState([...alumno]);
   const [expandedIndex, setExpandedIndex] = useState(0);
   const [formComplete, setFormComplete] = useState(false);
+  const [alumnoMoroso, setAlumnoMoroso] = useState();
+
+  const [selectedOptions, setSelectedOptions] = useState(
+    Array(formData.length).fill("")
+  );
+
+  const SelectComponent = ({ index }) => {
+    const selectedOption = selectedOptions[index];
+
+    const handleOptionChange = (event) => {
+      const { value } = event.target;
+      setSelectedOptions((prevOptions) => {
+        const updatedOptions = [...prevOptions];
+        updatedOptions[index] = value;
+        return updatedOptions;
+      });
+    };
+
+    return (
+      <FormControl variant="standard" fullWidth>
+        <InputLabel>Curso</InputLabel>
+        <Select value={selectedOption} onChange={handleOptionChange}>
+          {Object.entries(options).map(([section, values]) => [
+            <MenuItem value={section} disabled key={section}>
+              {section}
+            </MenuItem>,
+            ...values.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.curso}
+              </MenuItem>
+            )),
+          ])}
+        </Select>
+      </FormControl>
+    );
+  };
 
   const handleChange = (event, index) => {
     const { name, value } = event.target;
-    let updatedData; // Declare the updatedData variable
+    let updatedData;
     setFormData((prevData) => {
       const updatedData = [...prevData];
       updatedData[index] = {
@@ -90,14 +99,13 @@ function SonDataStep({ alumno, datosMhg }) {
       return updatedData;
     });
 
-    // Check form completion
     const isFormComplete = updatedData.every(
       (student) =>
-        student.NOMBRE &&
-        student.APELLIDO &&
-        student.CURSO &&
-        student.DNI &&
-        student.FECHA_NAC
+        student.NOMBRE.trim() !== "" &&
+        student.APELLIDO.trim() !== "" &&
+        student.CURSO.trim() !== "" &&
+        student.DNI.trim() !== "" &&
+        student.FECHA_NAC.trim() !== ""
     );
     setFormComplete(isFormComplete);
   };
@@ -127,25 +135,23 @@ function SonDataStep({ alumno, datosMhg }) {
     });
   };
 
-  const handleSaveStudentsData = async () => {
-    if (alumno.LEYENL3) {
-      // Block saving data
-      console.log("Cannot save data. alumno.LEYEND3 has a value.");
-      return;
-    }
-    const hijos = {
-      DNI_P: datosMhg.DNI_P,
-      hijos: [...formData],
-    };
+  const handleImageUpload = async (event, index) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("dni", formData[index].DNI);
 
     try {
-      console.log("datos del padre");
       await axios.post(
-        "https://familias.colegiociudadjardin.edu.ar/api/v1/families/createOrUpdate",
-        hijos
+        "https://familias.colegiociudadjardin.edu.ar/api/v1/dniUpload/uploadImage",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-      console.log("Data saved successfully");
-      // Perform additional actions after saving father's data
+      console.log("Image uploaded successfully");
     } catch (error) {
       console.error(error);
     }
@@ -161,7 +167,7 @@ function SonDataStep({ alumno, datosMhg }) {
       ];
 
       const isExpanded = expandedIndex === index;
-      console.log("alumno", alumno);
+
       return (
         <ListItem key={index} disablePadding>
           <Box
@@ -188,7 +194,33 @@ function SonDataStep({ alumno, datosMhg }) {
                 Alumno {index + 1}
               </Typography>
             </Button>
+            <Typography
+              variant="caption"
+              sx={{ fontWeight: "bold", color: "#d8bc02" }}
+            >
+              {son.LEYENL2}
+            </Typography>
+            <p></p>
 
+            {son.LEYENL3 == 1 && (
+              <Typography
+                variant="caption"
+                sx={{ fontWeight: "bold", color: "red" }}
+              >
+                Matriculación Bloqueada
+              </Typography>
+            )}
+            {son.PLANCUO == 2 && (
+              <FormControl fullWidth>
+                <Typography>Foto Frente DNI</Typography>
+                <input
+                  size="small"
+                  type="file"
+                  accept="image/jpeg, image/png"
+                  onChange={(event) => handleImageUpload(event, index)}
+                />
+              </FormControl>
+            )}
             <Collapse in={isExpanded} timeout="auto" unmountOnExit>
               <List disablePadding>
                 {inputs.map((input) => {
@@ -198,7 +230,7 @@ function SonDataStep({ alumno, datosMhg }) {
                     input.variant === "date" &&
                     typeof inputValue === "string"
                   ) {
-                    inputValue = inputValue.split("T")[0]; // Extract the date portion
+                    inputValue = inputValue.split("T")[0];
                   }
 
                   return (
@@ -213,9 +245,6 @@ function SonDataStep({ alumno, datosMhg }) {
                         {input.label}
                       </Typography>
 
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                        {alumno.LEYENL2}
-                      </Typography>
                       <Input
                         size="small"
                         name={input.name}
@@ -228,7 +257,10 @@ function SonDataStep({ alumno, datosMhg }) {
                     </ListItem>
                   );
                 })}
-                <SelectComponent></SelectComponent>
+
+                <ListItem disablePadding>
+                  <SelectComponent index={index} />
+                </ListItem>
                 <Box textAlign="right" mt={1}>
                   <IconButton
                     aria-label="Remove"
@@ -257,17 +289,6 @@ function SonDataStep({ alumno, datosMhg }) {
           onClick={handleAddStudent}
         >
           Agregar Alumno
-        </Button>
-      </Box>
-      <Box textAlign="center">
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          onClick={handleSaveStudentsData}
-          disabled={!formComplete}
-        >
-          Guardar datos
         </Button>
       </Box>
     </Box>

@@ -13,7 +13,7 @@ const steps = [
   "Confirmar Responsable I",
   "Confirmar Responsable II",
   "Datos de los Alumnos",
-  "Datos de Matricula",
+  "Forma de Pago",
   "Reglamentos y Contratos",
 ];
 const SERVERURI = "https://familias.colegiociudadjardin.edu.ar/api/v1/";
