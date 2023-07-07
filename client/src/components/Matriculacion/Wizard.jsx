@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Stepper, Step, StepLabel, Button } from "@mui/material";
+import { Stepper, Step, StepLabel, Button, Box } from "@mui/material";
 import { Typography } from "@mui/material";
 import WelcomeStep from "./Wizard/Welcome";
 import FatherDataStep from "./Wizard/Father";
@@ -62,7 +62,7 @@ function Wizard() {
   };
 
   return (
-    <div>
+    <Box>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
@@ -112,7 +112,7 @@ function Wizard() {
           </div>
         )}
       </div>
-    </div>
+    </Box>
   );
 }
 

@@ -17,6 +17,7 @@ import {
 import { makeStyles } from "@mui/styles";
 import MatriculaValores from "../Contrato/MatriculaValores";
 import axios from "axios";
+import SelectComponent from "./SelectComponent";
 
 const useStyles = makeStyles((theme) => ({
   tableHeader: {

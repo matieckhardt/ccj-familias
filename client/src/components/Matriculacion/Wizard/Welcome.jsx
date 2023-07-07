@@ -1,5 +1,5 @@
 import { Typography, Box } from "@mui/material";
-
+import SelectComponent from "./SelectComponent";
 // Separate component for each step
 function WelcomeStep() {
   return (

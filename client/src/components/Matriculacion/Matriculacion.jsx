@@ -11,7 +11,7 @@ const Matriculacion = () => {
         <Box
           sx={{
             marginLeft: "13%",
-            display: "flex",
+            display: "block",
             justifyContent: "center",
             alignItems: "center",
             height: "80vh",

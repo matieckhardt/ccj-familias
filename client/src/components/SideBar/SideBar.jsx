@@ -154,22 +154,18 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {[
-            "Matriculacion",
-            "Mis Datos",
-            "Mis Alumnos",
-            "Instrumentos",
-            "Ajedrez",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton component={Link} href={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {["Mis Datos", "Mis Alumnos", "Instrumentos", "Ajedrez"].map(
+            (text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton component={Link} href={text}>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
         </List>
         <Divider />
       </Drawer>
