@@ -33,25 +33,23 @@ const options = {
   ],
 };
 
-const SelectComponent = ({ index, formData }) => {
-  const [selectedOptions, setSelectedOptions] = useState(
-    Array(formData.length).fill("")
-  );
-  const selectedOption = selectedOptions[index];
-
+const SelectComponent = ({
+  index,
+  formData,
+  handleChange,
+  selectedCurso,
+  setSelectedCurso,
+}) => {
   const handleOptionChange = (event) => {
     const { value } = event.target;
-    setSelectedOptions((prevOptions) => {
-      const updatedOptions = [...prevOptions];
-      updatedOptions[index] = value;
-      return updatedOptions;
-    });
+    setSelectedCurso(value);
+    handleChange(index, "CURSO", value);
   };
 
   return (
     <FormControl variant="standard" fullWidth>
       <InputLabel>Curso</InputLabel>
-      <Select value={selectedOption} onChange={handleOptionChange}>
+      <Select name="CURSO" value={selectedCurso} onChange={handleOptionChange}>
         {Object.entries(options).map(([section, values]) => [
           <MenuItem value={section} disabled key={section}>
             {section}

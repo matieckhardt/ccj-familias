@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import React from "react";
+import React, { useState } from "react";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import SelectComponent from "./SelectComponent";
@@ -25,18 +25,27 @@ const SonDataForm = ({
   formData,
   datosMhg,
 }) => {
+  const [selectedCurso, setSelectedCurso] = useState("");
+
   const inputs = [
-    { label: "Nombre del Alumno", name: "NOMBRE", variant: "text" },
-    { label: "Apellido", name: "APELLIDO", variant: "text" },
-    { label: "DNI", name: "DNI", variant: "number" },
-    { label: "Fecha de nacimiento", name: "FECHA_NAC", variant: "date" },
+    { label: "Nombre del Alumno:", name: "NOMBRE", variant: "text" },
+    { label: "Apellido del Alumno:", name: "APELLIDO", variant: "text" },
+    { label: "Fecha de Nacimiento:", name: "FECHA_NAC", variant: "date" },
+    { label: "Documento de Identidad:", name: "DNI", variant: "number" },
+    {
+      label: "Curso a Matricular:",
+      name: "CURSO",
+      variant: "text",
+      readOnly: true,
+      display: "none",
+    },
   ];
-  console.log("students fdata", formData);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    handleChange(index, name, value);
+    if (name !== "CURSO") {
+      handleChange(index, name, value);
+    }
   };
-
   return (
     <List disablePadding>
       {inputs.map((input) => {
@@ -53,6 +62,9 @@ const SonDataForm = ({
               sx={{
                 marginRight: "8px",
                 whiteSpace: "nowrap",
+                fontSize: "15px",
+                fontWeight: "bold",
+                textTransform: "uppercase",
               }}
             >
               {input.label}
@@ -66,14 +78,25 @@ const SonDataForm = ({
               fullWidth
               type={input.variant}
               required
+              readOnly={input.readOnly}
+              sx={{
+                display: input.display,
+                marginBottom: "10px",
+                fontSize: "15px",
+                textTransform: "uppercase",
+              }}
             />
           </ListItem>
         );
       })}
       {son.PLANCUO == 2 && <FileUploadInput formData={formData} />}
 
-      <SelectComponent formData={formData} />
-
+      <SelectComponent
+        handleChange={handleChange}
+        formData={formData}
+        selectedCurso={selectedCurso}
+        setSelectedCurso={setSelectedCurso}
+      />
       <Box textAlign="right" mt={1}>
         <IconButton
           aria-label="Remove"

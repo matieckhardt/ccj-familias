@@ -101,7 +101,7 @@ function PricesStep(data) {
                 <MenuItem key="1" value="Matricula: Un Pago">
                   1 Pago Bonificado
                 </MenuItem>,
-                <MenuItem key="2" value="Matricula: Cuotas">
+                <MenuItem key="2" value="Matricula: 6 Cuotas">
                   6 Cuotas
                 </MenuItem>,
               ]

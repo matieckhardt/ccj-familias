@@ -93,7 +93,7 @@ function Wizard() {
             {/* ... */}
             <div>
               <Button disabled={activeStep === 0} onClick={handleBack}>
-                Back
+                VOLVER
               </Button>
               <Button
                 variant="contained"
@@ -106,7 +106,7 @@ function Wizard() {
                   )
                 }
               >
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                {activeStep === steps.length - 1 ? "TERMINAR" : "SIGUIENTE"}
               </Button>
             </div>
           </div>

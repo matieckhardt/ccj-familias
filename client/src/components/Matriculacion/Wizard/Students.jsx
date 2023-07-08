@@ -6,18 +6,17 @@ import axios from "axios";
 function SonDataStep({ alumno, datosMhg }) {
   const [formData, setFormData] = useState([...alumno]);
 
-  const handleChange = (event, index) => {
-    const { name, value } = event.target;
+  const handleChange = (index, field, value) => {
     setFormData((prevData) => {
       const updatedData = [...prevData];
       updatedData[index] = {
         ...updatedData[index],
-        [name]: value,
+        [field]: value,
       };
       return updatedData;
     });
   };
-
+  console.log(formData);
   const handleAddStudent = () => {
     setFormData((prevData) => [
       ...prevData,

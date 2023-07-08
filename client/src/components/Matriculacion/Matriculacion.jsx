@@ -7,7 +7,7 @@ import Wizard from "./Wizard";
 const Matriculacion = () => {
   return (
     <>
-      <Container maxWidth="xxl">
+      <Container maxWidth="xl">
         <Box
           sx={{
             marginLeft: "13%",

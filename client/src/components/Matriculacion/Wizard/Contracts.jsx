@@ -6,7 +6,15 @@ const Contracts = ({ datosCargados }) => {
   return (
     <Box p={10}>
       <div>
-        <h1>Contracts</h1>
+        <h2>
+          Porfavor, descargue el contrato y revise que toda la informacion fue
+          cargada correctamente
+        </h2>
+        <p>
+          Debera imprimir el contrato junto a los reglamentos para presentarlos
+          firmados en administracion, Muchas Gracias
+        </p>
+        <br></br>
         <Button
           variant="contained"
           component={Link}

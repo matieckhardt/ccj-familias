@@ -14,7 +14,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   tableHeader: {
-    backgroundColor: "#1976D2",
+    backgroundColor: "lightgrey",
     color: "#00000",
     fontWeight: 800,
   },

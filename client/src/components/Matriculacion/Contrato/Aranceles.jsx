@@ -12,7 +12,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   tableHeader: {
-    backgroundColor: "#1976D2", // Custom color for the table header
+    backgroundColor: "lightgrey", // Custom color for the table header
     color: "black", // Custom text color for the table header
     fontWeight: 800,
   },
