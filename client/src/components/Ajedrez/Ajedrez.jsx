@@ -117,7 +117,7 @@ function RegisterAjedrez() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+
 
     handleRegister(nombre, curso, taller)
       .then((response) => {
