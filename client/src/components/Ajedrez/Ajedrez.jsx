@@ -220,9 +220,10 @@ function RegisterAjedrez() {
                     );
                   })}
                 </TextField>
-                <Typography>Inscripciones estan cerradas </Typography>
+
                 <Button
                   variant="contained"
+                  type="submit"
                   sx={{
                     marginTop: "9px",
                     marginLeft: "10px",
